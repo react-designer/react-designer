@@ -1,0 +1,6 @@
+{
+  "presets": ["es2015", "stage-0", "react"],
+  "plugins": [
+  		["css-modules-transform", { "generateScopedName": "[name]__[local]___[hash:base64:5]" }]
+  ]
+}
