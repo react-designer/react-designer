@@ -80,7 +80,7 @@ class App() {
 
             <p>You can double-click to edit shapes.</p>
             <p>
-              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a>
+              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/Malevich.js">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
