@@ -95,7 +95,7 @@ export class _Input extends Vector {
     };
     return (
       <g>
-        <text fill={"black"} x={object.x} y={object.y} 
+        <text fill={"black"} x={object.x} y={object.y}
               style={style} textAnchor="left" fontSize={object.fontSize}
               fontFamily={object.fontFamily}>{object.text}</text>
         <rect style={this.getStyle()}
@@ -275,7 +275,7 @@ export default class extends Component {
             'fieldset': Fieldset
           }}
           objects={this.state.objects}
-          onUpdate={this.handleUpdate.bind(this)} />
+          onUpdate={this.handleUpdate.bind(this)}/>
         <p>
           <a href="#" onClick={this.download.bind(this)}>Export SVG</a>
         </p>

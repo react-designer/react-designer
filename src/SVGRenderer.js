@@ -50,7 +50,7 @@ class SVGRenderer extends Component {
   }
 }
 
-const styles = {
+export const styles = {
   canvas: {
     backgroundSize: 400
   },

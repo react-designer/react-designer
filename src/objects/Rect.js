@@ -13,8 +13,9 @@ export default class Rect extends Vector {
       height: 5,
       strokeWidth: 0,
       fill: "blue",
-      radius: 5,
-      blendMode: "normal"
+      radius: 0,
+      blendMode: "normal",
+      rotate: 0
     }
   };
 

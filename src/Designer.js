@@ -134,7 +134,7 @@ class Designer extends Component {
       currentObjectIndex: objects.length,
       selectedObjectIndex: objects.length,
       startPoint: this.getStartPointBundle(event, object),
-      mode: meta.mode || modes.SCALE,
+      mode: meta.editor ? modes.EDIT_OBJECT : modes.SCALE,
       selectedTool: null
     });
     

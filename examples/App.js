@@ -17,12 +17,12 @@ export default class App extends Component {
       <div className={classes.container}>
         <div className={classes.landing}>
           <h1>react-designer</h1>
-          <h2>Configurable design component for react</h2>
+          <h2>Easy to configure, lightweight, editable vector graphics in your react components.</h2>
           <ul className={classes.nav}>
             <li className={classes.current}><a href="#">usage</a></li>
-            <li><a href="#">examples</a></li>
-            <li><a href="#">docs</a></li>
-            <li><a href="#">show on github</a></li>
+            <li><a href="#examples">examples</a></li>
+            <li><a href="http://github.com/fatiherikli/react-designer">docs</a></li>
+            <li><a href="http://github.com/fatiherikli/react-designer">show on github</a></li>
           </ul>
         </div>
         <div className={classes.usage}>
@@ -54,7 +54,7 @@ class App() {
 }
           `}</pre>
         </div>
-        <h4 className={classes.mainTitle}>Examples</h4>
+        <h4 id="examples" className={classes.mainTitle}>Examples</h4>
         <div className={classes.example}>
           <div className={classes.info}>
             <h3>Mondrian</h3>
@@ -62,7 +62,7 @@ class App() {
             container component.</p>
             <p>Enabled all default drawing tool set and panels.</p>
             <p>
-              <a href="#">Show example on github</a>
+              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -78,7 +78,7 @@ class App() {
 
             <p>You can double-click to edit shapes.</p>
             <p>
-              <a href="#">Show example on github</a>
+              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -93,7 +93,7 @@ class App() {
               container component.</p>
 
             <p>
-              <a href="#">Show example on github</a>
+              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -119,7 +119,7 @@ class App() {
             <p>You can extend builtin components, or write entirely different objects</p>
 
             <p>
-              <a href="#">Show example on github</a>
+              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -138,8 +138,8 @@ class App() {
               For example price is instantly changing while you resizing objects or typing a text.</p>
 
             <p>
-              <a href="#">Show example on github</a> <br />
-              <a href="#">Show calculatePrice() function</a>
+              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a> <br />
+              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show calculatePrice() function</a>
             </p>
           </div>
           <div className={classes.preview}>

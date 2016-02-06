@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Designer, {styles as designerStyles} from '../../src/Designer';
+import Designer from '../../src/Designer';
+import {styles as canvasStyles} from '../../src/SVGRenderer';
 import {Text, Rect, Circle} from '../../src/objects/index';
 
 const priceMap = {
@@ -8,10 +9,8 @@ const priceMap = {
   'circle': ({width, height}) => width * (height || width) * 0.001
 };
 
-const calculatePrice = (
-  objects,
-  initialCost = 5
-) => (
+const calculatePrice = (objects,
+                        initialCost = 5) => (
   objects.map(
     ({type, ...rest}) =>
       priceMap[type](rest)
@@ -24,7 +23,7 @@ const calculatePrice = (
 const Background = ({style}) => (
   <svg width="350" height="400" style={{
     position: "absolute",
-    ...designerStyles.grid
+    ...canvasStyles.grid
   }}>
     <path d="
         M 75 80
@@ -41,7 +40,7 @@ const Background = ({style}) => (
         C 74 182.28125, 57 187.28125, 57 187.28125
         C 57 187.28125, 21 142.28125, 21 142.28125
         C 21 142.28125, 75 80, 75 80
-        Z" style={style} />
+        Z" style={style}/>
   </svg>
 );
 
@@ -49,7 +48,43 @@ export default class extends Component {
 
   state = {
     objects: [
-      {"text":"COME TO THE","rotate":0,"fontWeight":"bold","fontStyle":"normal","textDecoration":"none","fill":"rgba(11, 10, 10, 1)","fontSize":"20","fontFamily":"AmericanTypewriter, Georgia, serif","type":"text","x":175,"y":153},{"text":"REACT","rotate":0,"fontWeight":"bold","fontStyle":"normal","textDecoration":"none","fill":"rgba(0, 0, 0, 1)","fontSize":"47","fontFamily":"AmericanTypewriter, Georgia, serif","type":"text","x":176,"y":183},{"text":"SIDE","rotate":0,"fontWeight":"bold","fontStyle":"normal","textDecoration":"none","fill":"rgba(0, 0, 0, 1)","fontSize":"25","fontFamily":"AmericanTypewriter, Georgia, serif","type":"text","x":171,"y":216}
+      {
+        "text": "COME TO THE",
+        "rotate": 0,
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "fill": "rgba(11, 10, 10, 1)",
+        "fontSize": "20",
+        "fontFamily": "AmericanTypewriter, Georgia, serif",
+        "type": "text",
+        "x": 175,
+        "y": 153
+      }, {
+        "text": "FRONT",
+        "rotate": 0,
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "fill": "rgba(0, 0, 0, 1)",
+        "fontSize": "47",
+        "fontFamily": "AmericanTypewriter, Georgia, serif",
+        "type": "text",
+        "x": 176,
+        "y": 183
+      }, {
+        "text": "END",
+        "rotate": 0,
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "fill": "rgba(0, 0, 0, 1)",
+        "fontSize": "25",
+        "fontFamily": "AmericanTypewriter, Georgia, serif",
+        "type": "text",
+        "x": 171,
+        "y": 216
+      }
     ]
   };
 
@@ -64,7 +99,7 @@ export default class extends Component {
           fill: "#fff989",
           stroke: "#808080",
           strokeWidth: 2
-        }} />
+        }}/>
         <Designer
           width={350} height={400}
           objectTypes={{
@@ -81,7 +116,7 @@ export default class extends Component {
           fontFamily: "monaco, monospace",
           color: "#494949"
         }}>
-          Price: {calculatePrice(this.state.objects).toFixed(2)}$
+          Tshirt Price: {calculatePrice(this.state.objects).toFixed(2)}$
         </div>
       </div>
     );

@@ -37,6 +37,8 @@ RotateAnchor = Radium(RotateAnchor);
 
 class Handler extends Component {
   onMouseDown(event) {
+    // event.preventDefault();
+
     if (event.target.classList.contains('handler')) {
       this.props.onDrag(event);
     }   

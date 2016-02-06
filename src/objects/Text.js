@@ -14,8 +14,8 @@ export default class Text extends Vector {
       fontWeight: "normal",
       fontStyle: "normal",
       textDecoration: "none",
-      fill: "red",
-      fontSize: 12,
+      fill: "black",
+      fontSize: 50,
       fontFamily: "Helvetica"
     }
   };
