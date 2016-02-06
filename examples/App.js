@@ -27,8 +27,8 @@ export default class App extends Component {
         </div>
         <div className={classes.usage}>
           <h4 className={classes.mainTitle}>Usage</h4>
-          <p>Give your objects and object types, then listen the changes. We used builtin 
-          object types in this example.</p>
+          <p>You should provide your objects and object types. The objects might be empty array if you want yo create a
+          blank canvas.</p>
           <pre className={classes.code}>{`
 import Designer, {Text, Rectangle} from 'react-designer';
 
@@ -53,6 +53,8 @@ class App() {
   }
 }
           `}</pre>
+          You should listen onUpdate callback to update your objects. React-designer will invoke this
+          callback in every update.
         </div>
         <h4 id="examples" className={classes.mainTitle}>Examples</h4>
         <div className={classes.example}>
@@ -62,7 +64,7 @@ class App() {
             container component.</p>
             <p>Enabled all default drawing tool set and panels.</p>
             <p>
-              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a>
+              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/Mondrian.js">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -93,7 +95,7 @@ class App() {
               container component.</p>
 
             <p>
-              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a>
+              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/SwissStyle.js">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -104,22 +106,21 @@ class App() {
         <div className={classes.example}>
           <div className={classes.info}>
             <h3>Mockup Designer</h3>
-            <p>An extended toolset for very simple mockup designing tool. All of the toolset are
-              pure react components.</p>
+            <p>An extended toolset for very simple mockup designing tool.</p>
 
             <p>Custom components on this demo:</p>
             <ul>
-              <li><a href="#">Button</a></li>
-              <li><a href="#">Input</a></li>
-              <li><a href="#">H1</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Fieldset</a></li>
+              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L32">Button</a></li>
+              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L73">Input</a></li>
+              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L7">H1</a></li>
+              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L19">Link</a></li>
+              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L113">Fieldset</a></li>
             </ul>
 
-            <p>You can extend builtin components, or write entirely different objects</p>
+            <p>These components are derived from Vector, but they are still pure React components.</p>
 
             <p>
-              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a>
+              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -138,13 +139,40 @@ class App() {
               For example price is instantly changing while you resizing objects or typing a text.</p>
 
             <p>
-              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show example on github</a> <br />
-              <a href="https://github.com/fatiherikli/react-deisnger/tree/master/examples/components/">Show calculatePrice() function</a>
+              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/TshirtDesigner.js">Show example on github</a> <br />
             </p>
           </div>
-          <div className={classes.preview}>
+          <div className={classes.preview} style={{marginBottom: 40}}>
             <TshirtDesignerExample />
           </div>
+          <p className={classes.info} style={{
+            clear: "left",
+            marginTop: -40
+          }}>
+          Here is price calculation logic:
+          </p>
+          <pre className={classes.code} style={{
+              paddingTop: 10,
+              paddingBottom: 10
+          }}>{`
+const priceMap = {
+  'text': ({text, fontSize}) => text.length * fontSize * 0.01,
+  'rectangle': ({width, height}) => width * height * 0.001,
+  'circle': ({width, height}) => width * (height || width) * 0.001
+};
+
+const calculatePrice = (objects, initialCost = 5) => (
+  objects.map(
+    ({type, ...rest}) => priceMap[type](rest)
+  ).reduce(
+    (a, b) => a + b,
+    initialCost
+  )
+);
+          `}</pre>
+          <p className={classes.info}>
+          We are calling this function in our `handleUpdate` method.
+          </p>
         </div>
         <div className={classes.footer}>
           <div className={classes.footerLeft}>
