@@ -42,7 +42,6 @@ export default class Text extends Vector {
     return (
       <text style={this.getStyle()}
          {...this.getObjectAttributes()}
-         fontFamily="helvetica"
          textAnchor="middle"
          fontSize={object.fontSize}
          fontFamily={object.fontFamily}>
