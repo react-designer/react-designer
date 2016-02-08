@@ -1,6 +1,7 @@
 {
   "name": "react-designer",
   "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Easy to configure, lightweight, editable vector graphics in your react components.",
   "main": "lib/index.js",
   "scripts": {
@@ -36,7 +37,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1",
-    "style-loader": "^0.13.0"
+    "style-loader": "^0.13.0",
     "react-dom": "^0.14.0"
   },
   "dependencies": {

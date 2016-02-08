@@ -1,0 +1,6 @@
+## Release Notes
+
+### 1.0.6
+
+	- `Designer` component exported as default now.
+	- Added `insertMenu` prop to `Designer` component.

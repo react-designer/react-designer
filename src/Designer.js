@@ -22,7 +22,8 @@ class Designer extends Component {
       'polygon': Path
     },
     snapToGrid: 1,
-    svgStyle: {}
+    svgStyle: {},
+    insertMenu: InsertMenu
   };
 
   state = {
@@ -483,11 +484,15 @@ class Designer extends Component {
     let {showHandler, handler, mode,
          selectedObjectIndex, selectedTool} = this.state;
     
-    let {objects, objectTypes} = this.props,
-        currentObject = objects[selectedObjectIndex],
+    let {
+      objects, 
+      objectTypes, 
+      insertMenu: InsertMenuComponent
+    } = this.props;
+
+    let currentObject = objects[selectedObjectIndex],
         isEditMode = mode === modes.EDIT_OBJECT,
-        showPropertyPanel = selectedObjectIndex !== null,
-        showInsertMenu = true;
+        showPropertyPanel = selectedObjectIndex !== null;
 
     let {width, height, canvasWidth, canvasHeight} = this.getCanvas();
     
@@ -500,7 +505,7 @@ class Designer extends Component {
       };
       ObjectEditor = objectComponent.meta.editor;
     }
-
+    
     return (
       <HotKeys
         keyMap={this.keyMap}
@@ -537,8 +542,8 @@ class Designer extends Component {
               onResize={this.startDrag.bind(this, modes.SCALE)}
               onRotate={this.startDrag.bind(this, modes.ROTATE)} /> )}
           
-          {showInsertMenu && (
-            <InsertMenu tools={objectTypes}
+          {InsertMenuComponent && (
+            <InsertMenuComponent tools={objectTypes}
               currentTool={selectedTool}
               onSelect={this.selectTool.bind(this)} />
           )}

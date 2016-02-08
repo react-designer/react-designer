@@ -98,10 +98,10 @@
 .code {
 	font-family: Monaco;
 	display: block;
-	padding: 40px;
+	padding: 30px 25px;
 	background: #f6f6f6;
 	color: #434746;
-	line-height: 1.5em;
+	line-height: 1.6em;
 	font-size: 0.9em;
 }
 
