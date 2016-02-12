@@ -30,19 +30,19 @@ export default class App extends Component {
           <p>You should provide your objects and object types. The objects might be empty array if you want yo create a
           blank canvas.</p>
           <pre className={classes.code}>{`
-import Designer, {Text, Rectangle} from 'react-designer';
+import Designer, {Text, Rect} from 'react-designer';
 
 class App() {
   state = {
     objects: [
       {type: "text", x: 10, y: 20, text: "Hello!", fill: "red"},
-      {type: "rect", x: 50, y: 70, fill: "red"}
+      {type: "rect", x: 50, y: 70, width: 30, height: 40, fill: "red"}
     ]
-  }
+  };
 
   render() {
     return (
-      <Designer width={250} height={350}
+      <Designer width={500} height={500}
         objectTypes={{
           'text': Text,
           'rect': Rect
@@ -52,7 +52,7 @@ class App() {
     )
   }
 }
-          `}</pre>
+          `.trim()}</pre>
           You should listen onUpdate callback to update your objects. React-designer will invoke this
           callback in every update.
         </div>
