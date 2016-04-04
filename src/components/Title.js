@@ -1,4 +1,4 @@
-import {Rect, Vector, Text} from './objects'
+import {Rect, Vector, Text} from '../objects'
 
 export class Title extends Text {
   static meta = {
