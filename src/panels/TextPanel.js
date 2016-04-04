@@ -19,6 +19,7 @@ export default class TextPanel extends Panel {
     ['Georgia', 'Georgia, serif'],
     ['American Typewriter', 'AmericanTypewriter, Georgia, serif'],
     ['Monaco', 'Monaco, consolas, monospace'],
+    ['Times New Roman', 'Times New Roman, serif'],
   ];
 
   render() {
@@ -28,13 +29,13 @@ export default class TextPanel extends Panel {
           <div style={styles.columns}>
             <Column style={{marginRight: 15}}>
               {_.has(object, 'fontWeight') &&
-                <SwitchState icon="format-bold" 
+                <SwitchState icon="format-bold"
                   defaultValue={'normal'}
                   nextState={'bold'}
                   value={object.fontWeight}
                   onChange={this.props.onChange.bind(this, 'fontWeight')} />}
               {_.has(object, 'fontStyle') &&
-                <SwitchState icon="format-italic" 
+                <SwitchState icon="format-italic"
                   defaultValue={'normal'}
                   nextState={'italic'}
                   value={object.fontStyle}
@@ -48,20 +49,20 @@ export default class TextPanel extends Panel {
             </Column>
             <Column style={{"float": "left"}}>
               {_.has(object, 'fontSize') &&
-                <input style={[styles.input, styles.integerInput, {width: 35}]} 
+                <input style={[styles.input, styles.integerInput, {width: 35}]}
                        value={object.fontSize}
                        onChange={(e) => this.props.onChange('fontSize', e.target.value)} />}
             </Column>
             <Column style={{"float": "right", marginRight: 10}}>
-              <select style={styles.select} 
+              <select style={styles.select}
                       value={object.fontFamily}
                       onChange={(e) => this.props.onChange('fontFamily', e.target.value)}  >
-                {this.fontFamilies.map(([name, value]) => 
+                {this.fontFamilies.map(([name, value]) =>
                     <option key={value} value={value}>{name}</option>)}
               </select>
             </Column>
             <div style={[styles.row, {paddingTop: 25, paddingRight: 10}]}>
-              <input style={[styles.input, styles.textInput]} 
+              <input style={[styles.input, styles.textInput]}
                      onChange={(e) => this.props.onChange('text', e.target.value)}
                      value={object.text} />
             </div>
