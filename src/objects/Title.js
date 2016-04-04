@@ -1,4 +1,5 @@
 import Text from './Text';
+import Icon from '../Icon';
 
 export class Title extends Text {
   static meta = {
