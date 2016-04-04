@@ -1,7 +1,11 @@
 import Text from './Text';
-import Icon from '../Icon';
 
-export class Title extends Text {
+import React, {Component} from 'react';
+import {modes} from '../constants';
+import Icon from '../Icon';
+import _ from 'lodash';
+
+export default class Title extends Text {
   static meta = {
     icon: <center style={{color: "gray"}}>Title</center>,
     initial: {
