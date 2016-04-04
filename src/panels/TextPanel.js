@@ -19,7 +19,7 @@ export default class TextPanel extends Panel {
     ['Georgia', 'Georgia, serif'],
     ['American Typewriter', 'AmericanTypewriter, Georgia, serif'],
     ['Monaco', 'Monaco, consolas, monospace'],
-    ['Times New Roman', 'Monaco, consolas, monospace'],
+    ['Times New Roman', 'Times New Roman, serif'],
   ];
 
   render() {
