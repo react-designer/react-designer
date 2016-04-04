@@ -10,7 +10,7 @@ import SVGRenderer from './SVGRenderer';
 import Handler from './Handler';
 import {modes} from './constants';
 import * as actions from './actions';
-import {Text, Path, Rect, Circle, Title} from './objects';
+import {Text, Path, Rect, Circle, Title, Box} from './objects';
 import PanelList from './panels/PanelList';
 
 class Designer extends Component {
@@ -109,10 +109,27 @@ class Designer extends Component {
     });
   }
 
+  generateUUID() {
+      var d = new Date().getTime();
+      if(window.performance && typeof window.performance.now === "function"){
+          d += performance.now(); //use high-precision timer if available
+      }
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = (d + Math.random()*16)%16 | 0;
+          d = Math.floor(d/16);
+          return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+      });
+      return uuid;
+  }
+
   newObject(event) {
     let {mode, selectedTool} = this.state;
 
+    console.log(mode, selectedTool, this.state)
+
     this.resetSelection(event);
+
+    console.log(mode, selectedTool, this.state)
 
     if (mode !== modes.DRAW) {
       return;
@@ -126,7 +143,8 @@ class Designer extends Component {
       ...meta.initial,
       type: selectedTool,
       x: mouse.x,
-      y: mouse.y
+      y: mouse.y,
+      uuid: this.generateUUID()
     };
 
     onUpdate([...objects, object]);
@@ -155,6 +173,9 @@ class Designer extends Component {
       y: diffY + y
     }));
 
+    // console.log(object)
+    console.log("ID => ", object.uuid, "CHANGES :", JSON.stringify(newPath));
+
     return {
       ...object,
       path: newPath,
@@ -165,17 +186,21 @@ class Designer extends Component {
 
   updateObject(objectIndex, changes, updatePath) {
     let {objects, onUpdate} = this.props;
-
+    // console.log("THIS PROPS => ",this.props)
+    // console.log(this.props, changes, updatePath, objectIndex)
+    // console.log(index, objectIndex)
     onUpdate(objects.map((object, index) => {
       if (index === objectIndex) {
         let newObject = {
           ...object,
           ...changes
         };
+
         return updatePath
                 ? this.updatePath(newObject)
                 : newObject;
       } else {
+        console.log("ID=> ", object.uuid, "CHANGES :", JSON.stringify(changes))
         return object;
       }
     }));
@@ -391,6 +416,7 @@ class Designer extends Component {
 
   handleObjectChange(key, value) {
     let {selectedObjectIndex} = this.state;
+    // console.log(this.state, key, value)
     this.updateObject(selectedObjectIndex, {
       [key]: value
     });

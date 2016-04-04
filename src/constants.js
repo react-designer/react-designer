@@ -15,3 +15,4 @@ export const modes = {
   TYPE,
   EDIT_OBJECT
 };
+
