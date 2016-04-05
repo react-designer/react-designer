@@ -21,7 +21,7 @@ class PanelList extends Component {
       top: offset.y + window.scrollY,
     };
     return (
-      <Portal closeOnEsc closeOnOutsideClick isOpened={true}>
+      <Portal className="propertyPanel" closeOnEsc closeOnOutsideClick isOpened={true}>
         <div style={[styles.propertyPanel, style]}>
           {objectComponent.panels.map((Panel, i) => <Panel key={i} {...this.props} />)}
         </div>
