@@ -10,14 +10,14 @@ export default class Text extends Vector {
   static meta = {
     icon: <Icon icon={'text'} size={30} />,
     initial: {
-      text: "Hello",
+      text: "I am a text object...",
       rotate: 0,
       fontWeight: "normal",
-      fontStyle: "normal",
+      fontStyle: "italic",
       textDecoration: "none",
       fill: "black",
-      fontSize: 50,
-      fontFamily: "Helvetica"
+      fontSize: 20,
+      fontFamily: "Open Sans"
     }
   };
 

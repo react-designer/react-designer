@@ -10,7 +10,7 @@ import SVGRenderer from './SVGRenderer';
 import Handler from './Handler';
 import {modes} from './constants';
 import * as actions from './actions';
-import {Text, Path, Rect, Circle, Title, Box} from './objects';
+import {Text, Path, Rect, Circle, Image} from './objects';
 import PanelList from './panels/PanelList';
 
 class Designer extends Component {
@@ -19,7 +19,8 @@ class Designer extends Component {
       'text': Text,
       'rectangle': Rect,
       'circle': Circle,
-      'polygon': Path
+      'polygon': Path,
+      'image': Image
     },
     snapToGrid: 1,
     svgStyle: {},

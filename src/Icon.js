@@ -7,10 +7,9 @@ export default class Icon extends Component {
 
   renderGraphic() {
     switch (this.props.icon) {
-      case "box":
+      case 'image':
         return (
-          <rect x="50" y="20" rx="20" ry="20" width="150" height="150"
-            style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+          <g><path d="M21 19v-14c0-1.1-.9-2-2-2h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-12.5-5.5l2.5 3.01 3.5-4.51 4.5 6h-14l3.5-4.5z"></path></g>
         );
       case 'my-icon':
         return (

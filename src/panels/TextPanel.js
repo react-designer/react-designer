@@ -21,6 +21,17 @@ export default class TextPanel extends Panel {
     this.state = { value: props.object.fontFamily }
   }
 
+  menuStyle = {
+      borderRadius: '3px',
+      boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+      background: 'red',
+      padding: '2px 0',
+      fontSize: '90%',
+      position: 'fixed',
+      overflow: 'auto',
+      maxHeight: '50%', // TODO: don't cheat, let it flow to the bottom
+  }
+
   fontFamilies = [
     // {name: 'PT Serif', family: 'PT Serif, Arial, serif'},
     // {name: 'Arvo', family: '"Arvo", Arial, serif'},
@@ -125,7 +136,7 @@ export default class TextPanel extends Panel {
     return (
       <PropertyGroup showIf={_.has(object, 'text')}>
           <div style={styles.columns}>
-            <Column style={{marginRight: 15}}>
+            <Column style={{"float": "right", "marginRight": 15}}>
               {_.has(object, 'fontWeight') &&
                 <SwitchState icon="format-bold"
                   defaultValue={'normal'}
@@ -145,17 +156,17 @@ export default class TextPanel extends Panel {
                   value={object.textDecoration}
                   onChange={this.props.onChange.bind(this, 'textDecoration')} />}
             </Column>
-            <Column style={{"float": "left"}}>
+            <Column style={{"float": "right"}} label="font size">
               {_.has(object, 'fontSize') &&
                 <input style={[styles.input, styles.integerInput, {width: 35}]}
                        value={object.fontSize}
                        onChange={(e) => this.props.onChange('fontSize', e.target.value)} />}
             </Column>
-            <Column style={{"float": "right", marginRight: 10}}>
+            <Column style={{"float": "right", marginRight: 10, padding: '3px 5px'}} label="choose font">
               <Autocomplete
                 value={this.state.value}
-                style={[styles.textInput]}
-                labelText="Choose a font"
+                style={this.menuStyle}
+                labelText=""
                 items={this.fontFamilies}
                 getItemValue={(item) => item.name}
                 shouldItemRender={this.matchStateToTerm}

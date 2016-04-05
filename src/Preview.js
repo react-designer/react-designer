@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Radium from 'radium';
 import SVGRenderer from './SVGRenderer';
 
-import {Text, Path, Rect, Circle, Title, Box} from './objects';
+import {Text, Path, Rect, Circle, Image} from './objects';
 
 class Preview extends Component {
   static defaultProps = {
@@ -10,7 +10,8 @@ class Preview extends Component {
       'text': Text,
       'rectangle': Rect,
       'circle': Circle,
-      'polygon': Path
+      'polygon': Path,
+      'image': Image
     }
   };
 
