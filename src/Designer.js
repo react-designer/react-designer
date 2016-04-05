@@ -543,7 +543,8 @@ class Designer extends Component {
                 ...styles.container,
                 ...this.props.style,
                 width: canvasWidth,
-                height: canvasHeight
+                height: canvasHeight,
+                padding: 0
              }}
              onMouseMove={this.onDrag.bind(this)}
              onMouseUp={this.stopDrag.bind(this)}>

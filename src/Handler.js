@@ -6,8 +6,8 @@ import Icon from './Icon';
 function ScaleAnchor(props) {
   let {boundingBox} = props;
   let style = {
-    marginTop: boundingBox.height - 4,
-    marginLeft: boundingBox.width - 4
+    marginTop: boundingBox.height + 5,
+    marginLeft: boundingBox.width + 5
   };
   return (
     <div style={[styles.anchor,
@@ -22,7 +22,7 @@ ScaleAnchor = Radium(ScaleAnchor);
 
 function RotateAnchor(props) {
   let style = {
-    marginLeft: props.boundingBox.width - 3
+    marginLeft: props.boundingBox.width + 5
   };
   return (
     <div style={[styles.anchor,
@@ -46,13 +46,18 @@ class Handler extends Component {
 
   render() {
     let {props} = this;
+    console.log(props)
+    // props.boundingBox.height += 10
+    // props.boundingBox.width += 10
     let {boundingBox} = props;
 
     let handlerStyle = {
       ...styles.handler,
       ...boundingBox,
-      left: boundingBox.left - 2,
-      top: boundingBox.top - 2,
+      width: boundingBox.width + 10,
+      height: boundingBox.height + 10,
+      left: boundingBox.left - 5,
+      top: boundingBox.top - 5,
       transform: `rotate(${boundingBox.rotate}deg)`
     };
 
