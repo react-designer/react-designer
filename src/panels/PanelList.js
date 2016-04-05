@@ -20,6 +20,7 @@ class PanelList extends Component {
       left: offset.width + offset.x,
       top: offset.y + window.scrollY,
     };
+    console.log("OBJECT => ", object, "OBJECT COMPONENT => ", objectComponent)
     return (
       <Portal className="propertyPanel" closeOnEsc closeOnOutsideClick isOpened={true}>
         <div style={[styles.propertyPanel, style]}>

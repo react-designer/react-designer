@@ -369,6 +369,7 @@ class Designer extends Component {
 
   getObjectComponent(type) {
     let {objectTypes} = this.props;
+    console.log("OBJECT COMPONENT => ",objectTypes[type], "TYPE => ", type)
     return objectTypes[type];
   }
 
@@ -530,6 +531,7 @@ class Designer extends Component {
         ...objectComponent.meta.initial,
         ...currentObject
       };
+      console.log("OBJECT COMPONENT =>", objectComponent)
       ObjectEditor = objectComponent.meta.editor;
     }
 
