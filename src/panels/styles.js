@@ -94,5 +94,16 @@ export default {
     textDecoration: 'none',
     display: 'block',
     padding: '2px 0',
-  }
+  },
+  item: {
+    padding: '2px 6px',
+    cursor: 'default'
+  },
+
+  highlightedItem: {
+    color: 'white',
+    background: 'hsl(200, 50%, 50%)',
+    padding: '2px 6px',
+    cursor: 'default'
+  },
 };

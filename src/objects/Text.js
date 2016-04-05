@@ -4,6 +4,7 @@ import Icon from '../Icon';
 import _ from 'lodash';
 
 import Vector from './Vector';
+import WebFont from 'webfontloader';
 
 export default class Text extends Vector {
   static meta = {
@@ -39,6 +40,11 @@ export default class Text extends Vector {
 
   render() {
     let {object, index} = this.props;
+    WebFont.load({
+      google: {
+        families: [object.fontFamily]
+      }
+    });
     return (
       <text style={this.getStyle()}
          {...this.getObjectAttributes()}
