@@ -52,7 +52,7 @@ class Designer extends Component {
 
   componentWillMount() {
     this.objectRefs = {};
-    console.log("will mount", this.props)
+    // console.log("will mount", this.props)
   }
 
   showHandler(index) {
