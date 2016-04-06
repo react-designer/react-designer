@@ -26,7 +26,8 @@ class Preview extends Component {
       ...styles.container,
       ...this.props.style,
       width: width,
-      height: height
+      height: height,
+      padding: 0
    };
 
    let canvas = {

@@ -12,6 +12,7 @@ import SwitchState from './SwitchState';
 import Columns from './Columns';
 import Column from './Column';
 import Dropzone from 'react-dropzone';
+import request from 'superagent';
 
 export default class ImagePanel extends Panel {
   state = {
@@ -19,8 +20,20 @@ export default class ImagePanel extends Panel {
   }
 
   onDrop (files) {
-    this.props.onChange("href", "/img/"+files[0].name);
-    console.log('Received files: ', files);
+
+    let {id} = this.props
+
+    var req = request.post(`/menus/${id}/uploads`);
+    req.query({ format: 'json' })
+    req.field('authenticity_token', $('meta[name="csrf-token"]').attr('content') )
+    files.forEach((file)=> {
+        req.attach("upload[mediable]", file);
+    });
+    req.end((err, res)=>{
+      this.props.onChange("xlinkHref", res.body.mediable);
+    });
+
+
     this.setState({
       files: files
     });
@@ -29,7 +42,7 @@ export default class ImagePanel extends Panel {
   render() {
     let {object} = this.props;
     return (
-      <PropertyGroup object={object}  showIf={_.has(object, 'href')}>
+      <PropertyGroup object={object}  showIf={_.has(object, 'xlinkHref')}>
           <div style={styles.columns}>
             <Column>
               <div className="dropzone--wrapper">

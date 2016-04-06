@@ -85,7 +85,7 @@ export default class TextPanel extends Panel {
     {name: 'Open Sans', family: 'Open Sans'},
     {name: 'Poppins', family: 'Poppins'},
     {name: 'Lora', family: 'Lora'},
-    {name: 'Sourc Pro', family: 'Sourc Pro'},
+    {name: 'Source Pro', family: 'Source Pro'},
     {name: 'Karla', family: 'Karla'},
     {name: 'Source Sans Pro', family: 'Source Sans Pro'},
     {name: 'Inconsolata', family: 'Inconsolata'},

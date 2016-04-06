@@ -52,6 +52,7 @@ class Designer extends Component {
 
   componentWillMount() {
     this.objectRefs = {};
+    console.log("will mount", this.props)
   }
 
   showHandler(index) {
@@ -126,11 +127,11 @@ class Designer extends Component {
   newObject(event) {
     let {mode, selectedTool} = this.state;
 
-    console.log(mode, selectedTool, this.state)
+    // console.log(mode, selectedTool, this.state)
 
     this.resetSelection(event);
 
-    console.log(mode, selectedTool, this.state)
+    // console.log(mode, selectedTool, this.state)
 
     if (mode !== modes.DRAW) {
       return;
@@ -175,7 +176,7 @@ class Designer extends Component {
     }));
 
     // console.log(object)
-    console.log("ID => ", object.uuid, "CHANGES :", JSON.stringify(newPath));
+    // console.log("ID => ", object.uuid, "CHANGES :", JSON.stringify(newPath));
 
     return {
       ...object,
@@ -201,7 +202,7 @@ class Designer extends Component {
                 ? this.updatePath(newObject)
                 : newObject;
       } else {
-        console.log("ID=> ", object.uuid, "CHANGES :", JSON.stringify(changes))
+        // console.log("ID=> ", object.uuid, "CHANGES :", JSON.stringify(changes))
         return object;
       }
     }));
@@ -369,7 +370,7 @@ class Designer extends Component {
 
   getObjectComponent(type) {
     let {objectTypes} = this.props;
-    console.log("OBJECT COMPONENT => ",objectTypes[type], "TYPE => ", type)
+    // console.log("OBJECT COMPONENT => ",objectTypes[type], "TYPE => ", type)
     return objectTypes[type];
   }
 
@@ -531,7 +532,6 @@ class Designer extends Component {
         ...objectComponent.meta.initial,
         ...currentObject
       };
-      console.log("OBJECT COMPONENT =>", objectComponent)
       ObjectEditor = objectComponent.meta.editor;
     }
 
@@ -582,6 +582,7 @@ class Designer extends Component {
 
           {showPropertyPanel && (
             <PanelList
+              id={this.props.id}
               offset={this.getOffset()}
               object={objectWithInitial}
               onArrange={this.handleArrange.bind(this)}

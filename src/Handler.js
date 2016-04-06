@@ -46,7 +46,7 @@ class Handler extends Component {
 
   render() {
     let {props} = this;
-    console.log(props)
+    // console.log(props)
     // props.boundingBox.height += 10
     // props.boundingBox.width += 10
     let {boundingBox} = props;
