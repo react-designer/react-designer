@@ -15,18 +15,10 @@ export default class Image extends Vector {
     }
   };
 
-  getStyle() {
-    let {object} = this.props;
-    return {
-      ...super.getStyle(),
-      fontWeight: object.xlinkHref,
-    };
-  }
-
   render() {
     let {object, index} = this.props;
     return (
-      <image style={this.getStyle()}
+      <image
          xlinkHref={object.xlinkHref}
          {...this.getObjectAttributes()}
          width={object.width}
