@@ -3,6 +3,4 @@ export Path from './Path';
 export Rect from './Rect';
 export Circle from './Circle';
 export Text from './Text';
-// export Title from './Title';
-// export Box from './Box';
 export Image from './Image';

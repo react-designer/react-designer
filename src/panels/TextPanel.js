@@ -124,13 +124,6 @@ export default class TextPanel extends Panel {
     )
   }
 
-              // <select style={styles.select}
-              //         value={object.fontFamily}
-              //         onChange={this.handleFontFamilyChange.bind(this)}  >
-              //   {this.fontFamilies.map(([name, value]) =>
-              //       <option key={value} value={value}>{name}</option>)}
-              // </select>
-
   render() {
     let {object} = this.props;
     return (
