@@ -20,9 +20,7 @@ export default class ImagePanel extends Panel {
   }
 
   onDrop (files) {
-
     let {id} = this.props
-
     var req = request.post(`/menus/${id}/uploads`);
     req.query({ format: 'json' })
     req.field('authenticity_token', $('meta[name="csrf-token"]').attr('content') )
@@ -32,7 +30,6 @@ export default class ImagePanel extends Panel {
     req.end((err, res)=>{
       this.props.onChange("xlinkHref", res.body.mediable);
     });
-
 
     this.setState({
       files: files

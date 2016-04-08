@@ -45,6 +45,7 @@ class Preview extends Component {
           objects={objects}
           objectRefs={this.objectRefs}
           objectTypes={objectTypes}
+          onRender={(ref) => this.svgElement = ref}
           canvas={canvas} />
       </div>
     );

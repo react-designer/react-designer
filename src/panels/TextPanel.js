@@ -75,7 +75,7 @@ export default class TextPanel extends Panel {
     {name: 'Roboto', family: 'Roboto'},
     {name: 'Roboto Slab', family: 'Roboto Slab'},
     {name: 'Crimson Text', family: 'Crimson Text'},
-    {name: 'Libre Bakersville', family: 'Libre Bakersville'},
+    {name: 'Libre Baskerville', family: 'Libre Baskerville'},
     {name: 'Montserrat', family:'Montserrat'},
     {name: 'Archivo Narrow', family: 'Archivo Narrow'},
     {name: 'Lato', family: 'Lato'},
