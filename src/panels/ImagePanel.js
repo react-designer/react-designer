@@ -20,6 +20,7 @@ export default class ImagePanel extends Panel {
   }
 
   onDrop (files) {
+    $("#loader-wrapper").removeClass("hide")
     let {id} = this.props
     var req = request.post(`/menus/${id}/uploads`);
     req.query({ format: 'json' })
@@ -29,6 +30,7 @@ export default class ImagePanel extends Panel {
     });
     req.end((err, res)=>{
       this.props.onChange("xlinkHref", res.body.mediable);
+      $("#loader-wrapper").addClass("hide")
     });
 
     this.setState({
