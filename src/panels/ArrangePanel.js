@@ -28,6 +28,14 @@ export default class ArrangePanel extends Panel {
               </Button>
             </Column>
           </Columns>
+        <Columns label="Attributes">
+          <Column label="id"
+                  value={object.id}
+                  onChange={this.props.onChange.bind(this, 'id')} />
+          <Column label="href"
+                  value={object.href}
+                  onChange={this.props.onChange.bind(this, 'href')} />
+        </Columns>
         </PropertyGroup>
     );
   }
