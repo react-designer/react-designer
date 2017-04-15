@@ -24,6 +24,33 @@ export default class MyPanel extends Panel {
                             label="class"
                             onChange={key =>  onChange('className', key)} />
                 </Columns>
+                <Columns label="Custom">
+                    <Button onClick={() => {
+                        let cAttr = prompt('Name of custom attr');
+                        if (cAttr) {
+                            cAttr = 'data-x-'+cAttr;
+                            onChange(cAttr, '')
+                        }
+                    }}>
+                        <span>+ add custom attr</span>
+                    </Button>
+                    {
+                        Object.keys(object).map(key => {
+                            if (key.indexOf('data-x-') != -1) {
+                                return <Column
+                                            key={key}
+                                            value={object[key]}
+                                            label={key}
+                                            onChange={val =>  onChange(key, val)}
+                                />
+                            }
+                            else {
+                                return null
+                            }
+                        })
+                    }
+
+                </Columns>
             </PropertyGroup>
         );
     }
