@@ -109,12 +109,30 @@ export default class extends Component {
     this.setState({objects});
   }
 
+    download(event) {
+        event.preventDefault();
+        let svgElement = this.designer.svgElement;
+
+        svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+        let source = svgElement.outerHTML;
+        let uri = 'data:image/svg+xml;base64,' + btoa(source);
+
+        window.open(uri)
+    }
+
   render() {
     return (
+        <div>
       <Designer
+          ref={(ref) => this.designer = ref}
         width={350} height={400}
         objects={this.state.objects}
         onUpdate={this.handleUpdate.bind(this)}/>
+          <p>
+            <a href="#" onClick={this.download.bind(this)}>Export SVG</a>
+          </p>
+        </div>
     );
   }
 }
