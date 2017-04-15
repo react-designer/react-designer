@@ -13,9 +13,18 @@ import Column from './Column';
 
 export default class MyPanel extends Panel {
     render() {
-        let {object} = this.props;
+        let { object, onChange } = this.props;
         return (
-            null
+            <PropertyGroup>
+                <Columns label="Attr">
+                    <Column value={object.id}
+                            label="id"
+                            onChange={key => onChange('id', key)} />
+                    <Column value={object.className}
+                            label="class"
+                            onChange={key =>  onChange('className', key)} />
+                </Columns>
+            </PropertyGroup>
         );
     }
 }
