@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Radium from 'radium';
 import _ from 'lodash';
 
@@ -10,6 +10,7 @@ import Button from './Button';
 import SwitchState from './SwitchState';
 import Columns from './Columns';
 import Column from './Column';
+
 
 export default class MyPanel extends Panel {
     render() {
@@ -28,29 +29,33 @@ export default class MyPanel extends Panel {
                     <Button onClick={() => {
                         let cAttr = prompt('Name of custom attr');
                         if (cAttr) {
-                            cAttr = 'data-x-'+cAttr;
+                            cAttr = 'data-'+cAttr;
                             onChange(cAttr, '')
                         }
                     }}>
                         <span>+ add custom attr</span>
                     </Button>
-                    {
-                        Object.keys(object).map(key => {
-                            if (key.indexOf('data-x-') != -1) {
-                                return <Column
-                                            key={key}
-                                            value={object[key]}
-                                            label={key}
-                                            onChange={val =>  onChange(key, val)}
-                                />
-                            }
-                            else {
-                                return null
-                            }
-                        })
-                    }
-
                 </Columns>
+                {
+                    Object.keys(object).map(key => {
+                        if (key.indexOf('data-') != -1 && key != 'data-reactid') {
+                            return (
+                                <div style={[styles.row, {paddingTop: 5, paddingRight: 10}]}>
+                                    <input style={[styles.input, styles.textInput]}
+                                           onChange={(e) => onChange(key, e.target.value)}
+                                           value={object[key]}
+                                           placeholder={key}
+                                    />
+                                </div>
+                            )
+                        }
+                        else {
+                            return (
+                                null
+                            )
+                        }
+                    })
+                }
             </PropertyGroup>
         );
     }
