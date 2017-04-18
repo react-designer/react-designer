@@ -25,7 +25,6 @@ export default class Circle extends Vector {
     return attr
   }
 
-
   render() {
     let {object, index} = this.props;
     return (

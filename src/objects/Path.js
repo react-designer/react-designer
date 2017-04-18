@@ -53,7 +53,7 @@ export default class Path extends Vector {
 
     getObjectAttributes(){
         let attr = super.getObjectAttributes();
-        let toRemove = ['index', 'blendMode'];
+        let toRemove = ['index', 'blendMode', 'closed', 'moveX', 'moveY', 'path'];
         toRemove.forEach(key => delete attr[key]);
         return attr
     }
