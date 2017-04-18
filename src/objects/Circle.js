@@ -18,6 +18,14 @@ export default class Circle extends Vector {
     }
   };
 
+  getObjectAttributes(){
+    let attr = super.getObjectAttributes();
+    let toRemove = ['index', 'blendMode'];
+    toRemove.forEach(key => delete attr[key]);
+    return attr
+  }
+
+
   render() {
     let {object, index} = this.props;
     return (
