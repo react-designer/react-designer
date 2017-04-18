@@ -111,7 +111,7 @@ export default class Icon extends Component {
     return (
       <svg viewBox="0 0 24 24" 
         onClick={this.props.onClick}
-        preserveAspectRatio="xMidYMid meet" fit
+        preserveAspectRatio="xMidYMid meet"
         style={{...styles, ...this.props.style}}>
           {this.renderGraphic()}
       </svg>
