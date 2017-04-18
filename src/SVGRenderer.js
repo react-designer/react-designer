@@ -13,12 +13,6 @@ class SVGRenderer extends Component {
 
   renderObject(object, index) {
       let {objectRefs, onMouseOver} = this.props;
-
-      // let _object = object;
-      // delete _object.blendMode;
-      // delete _object.text;
-      // delete _object.index;
-
       let Renderer = this.getObjectComponent(object.type);
       return (
           <Renderer onRender={(ref) => objectRefs[index] = ref}
@@ -43,8 +37,6 @@ class SVGRenderer extends Component {
         marginLeft: canvasOffsetX
       }
     ];
-
-        // console.log('((((', objects)
 
     return (
       <svg onMouseDown={onMouseDown}

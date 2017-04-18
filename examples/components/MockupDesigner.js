@@ -30,134 +30,146 @@ export class _Link extends Text {
 }
 
 export class _Button extends Vector {
-  static meta = {
-    icon: <center style={{color: "gray"}}>Btn</center>,
-    initial: {
-      ...Text.meta.initial,
-      width: 100,
-      height: 30,
-      fill: "#b9b9b9",
-      stroke: "#646464",
-      strokeWidth: 2,
-      radius: 5,
-      text: "Button"
-    }
-  };
-
-  render() {
-    let {object} = this.props;
-    let style = {
-      dominantBaseline: 'central',
-      textAnchor: 'middle',
-      fontWeight: object.fontWeight,
-      fontStyle: object.fontStyle,
-      textDecoration: object.textDecoration
+    static meta = {
+        icon: <center style={{color: "gray"}}>Btn</center>,
+        initial: {
+            ...Text.meta.initial,
+            width: 100,
+            height: 30,
+            fill: "#b9b9b9",
+            stroke: "#646464",
+            strokeWidth: 2,
+            radius: 5,
+            text: "Button"
+        }
     };
-    return (
-      <g>
-        <rect style={this.getStyle()}
-          {...this.getObjectAttributes()}
-              rx={object.radius}
-              width={object.width}
-              height={object.height}/>
-        <text fill={"black"} style={style}
-              fontSize={object.fontSize}
-              fontFamily={object.fontFamily}
-              x={object.x + object.width / 2}
-              y={object.y + object.height / 2}>{object.text}</text>
-      </g>
-    );
-  }
+
+    static get DEPRECATED_ATTRS (){
+        return ['index', 'text'];
+    }
+
+    render() {
+        let {object} = this.props;
+        let style = {
+            dominantBaseline: 'central',
+            textAnchor: 'middle',
+            fontWeight: object.fontWeight,
+            fontStyle: object.fontStyle,
+            textDecoration: object.textDecoration
+        };
+        return (
+            <g>
+              <rect style={this.getStyle()}
+                    {...this.getObjectAttributes()}
+                    rx={object.radius}
+                    width={object.width}
+                    height={object.height}/>
+              <text fill={"black"} style={style}
+                    fontSize={object.fontSize}
+                    fontFamily={object.fontFamily}
+                    x={object.x + object.width / 2}
+                    y={object.y + object.height / 2}>{object.text}</text>
+            </g>
+        );
+    }
 }
 
 export class _Input extends Vector {
-  static meta = {
-    icon: <center style={{color: "gray"}}>Inp</center>,
-    initial: {
-      ...Text.meta.initial,
-      width: 100,
-      height: 40,
-      fill: "#fff",
-      stroke: "#646464",
-      strokeWidth: 2,
-      radius: 0,
-      text: 'Label'
-    }
-  };
-
-  render() {
-    let {object, index} = this.props;
-    let style = {
-      dominantBaseline: 'central',
-      fontWeight: object.fontWeight,
-      fontStyle: object.fontStyle,
-      textDecoration: object.textDecoration
+    static meta = {
+        icon: <center style={{color: "gray"}}>Inp</center>,
+        initial: {
+            ...Text.meta.initial,
+            width: 100,
+            height: 40,
+            fill: "#fff",
+            stroke: "#646464",
+            strokeWidth: 2,
+            radius: 0,
+            text: 'Label'
+        }
     };
-    return (
-      <g>
-        <text fill={"black"} x={object.x} y={object.y}
-              style={style} textAnchor="left" fontSize={object.fontSize}
-              fontFamily={object.fontFamily}>{object.text}</text>
-        <rect style={this.getStyle()}
-          {...this.getObjectAttributes()}
-              y={object.y + 10}
-              rx={object.radius}
-              width={object.width}
-              height={object.height - 10}/>
-      </g>
-    );
-  }
+
+    static get DEPRECATED_ATTRS (){
+        return ['index', 'text'];
+    }
+
+    render() {
+        let {object, index} = this.props;
+        let style = {
+            dominantBaseline: 'central',
+            fontWeight: object.fontWeight,
+            fontStyle: object.fontStyle,
+            textDecoration: object.textDecoration
+        };
+        return (
+            <g>
+              <text fill={"black"} x={object.x} y={object.y}
+                    style={style} textAnchor="left" fontSize={object.fontSize}
+                    fontFamily={object.fontFamily}>{object.text}</text>
+              <rect style={this.getStyle()}
+                    {...this.getObjectAttributes()}
+                    y={object.y + 10}
+                    rx={object.radius}
+                    width={object.width}
+                    height={object.height - 10}/>
+            </g>
+        );
+    }
 }
 
 
 export class Fieldset extends Vector {
-  static meta = {
-    icon: <center style={{color: "gray"}}>Fst</center>,
-    initial: {
-      ...Text.meta.initial,
-      width: 250,
-      height: 100,
-      strokeWidth: 2,
-      fill: "#e3e3e3",
-      stroke: "gray",
-      radius: 0
-    }
-  };
-
-  render() {
-    let {object} = this.props;
-
-    let textStyle = {
-      dominantBaseline: 'central',
-      textAnchor: 'left',
-      fontWeight: object.fontWeight,
-      fontStyle: object.fontStyle,
-      textDecoration: object.textDecoration
+    static meta = {
+        icon: <center style={{color: "gray"}}>Fst</center>,
+        initial: {
+            ...Text.meta.initial,
+            width: 250,
+            height: 100,
+            strokeWidth: 2,
+            fill: "#e3e3e3",
+            stroke: "gray",
+            radius: 0
+        }
     };
 
-    return (
-      <g>
-        <rect style={this.getStyle()}
-          {...this.getObjectAttributes()}
-              rx={object.radius}
-              width={object.width}
-              height={object.height}/>
+    static get DEPRECATED_ATTRS (){
+        return ['index', 'blendMode', 'text'];
+    }
 
-        <rect
-          width={Math.max(object.text.length * 12.5, 30)}
-          height={30} stroke={object.stroke}
-          strokeWidth={object.strokeWidth}
-          x={object.x + 15} y={object.y - 15}
-          fill={object.fill}/>
+    render() {
+        let {object} = this.props;
 
-        <text fill={"black"}
-              x={object.x + 25}
-              y={object.y }
-              fontFamily={object.fontFamily}
-              style={textStyle}>{object.text}</text>
-      </g>
-    );
-  }
+        let textStyle = {
+            dominantBaseline: 'central',
+            textAnchor: 'left',
+            fontWeight: object.fontWeight,
+            fontStyle: object.fontStyle,
+            textDecoration: object.textDecoration
+        };
+
+        return (
+            <g>
+              <rect style={this.getStyle()}
+                    {...this.getObjectAttributes()}
+                    rx={object.radius}
+                    width={object.width}
+                    height={object.height}/>
+
+              <rect
+                  width={Math.max(object.text.length * 12.5, 30)}
+                  height={30} stroke={object.stroke}
+                  strokeWidth={object.strokeWidth}
+                  x={object.x + 15} y={object.y - 15}
+                  fill={object.fill}/>
+
+              <text fill={"black"}
+                    x={object.x + 25}
+                    y={object.y }
+                    fontFamily={object.fontFamily}
+                    style={textStyle}>{object.text}</text>
+            </g>
+        );
+    }
 }
 
 
