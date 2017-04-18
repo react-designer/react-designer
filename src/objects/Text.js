@@ -37,11 +37,8 @@ export default class Text extends Vector {
         return `rotate(${rotate} ${x} ${y})`;
     }
 
-    getObjectAttributes(){
-        let attr = super.getObjectAttributes();
-        let toRemove = ['index', 'blendMode', 'text'];
-        toRemove.forEach(key => delete attr[key]);
-        return attr
+    static get DEPRECATED_ATTRS (){
+        return ['index', 'blendMode', 'text'];
     }
 
     render() {

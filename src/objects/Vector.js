@@ -8,36 +8,44 @@ import {SizePanel, TextPanel,
 
 
 export default class Vector extends Component {
-  static panels = [
-    SizePanel,
-    TextPanel,
-    StylePanel,
-    ArrangePanel,
-      MyPanel
-  ];
 
-  getStyle() {
-    let {object} = this.props;
-    return {
-      mixBlendMode: object.blendMode
-    }
-  }
-
-  getTransformMatrix({rotate, x, y, width, height}) {
-    if (rotate) {
-      let centerX = width / 2 + x;
-      let centerY = height / 2 + y;
-      return `rotate(${rotate} ${centerX} ${centerY})`;
-    }
-  }
-
-  getObjectAttributes() {
-    let {object, onRender, ...rest} = this.props;
-    return {
-      ...object,
-      transform: this.getTransformMatrix(object),
-      ref: onRender, 
-      ...rest
+    static get DEPRECATED_ATTRS(){
+        return []
     };
-  }
+
+    static panels = [
+        SizePanel,
+        TextPanel,
+        StylePanel,
+        ArrangePanel,
+        MyPanel
+    ];
+
+    getStyle() {
+        let {object} = this.props;
+        return {
+            mixBlendMode: object.blendMode
+        }
+    }
+
+    getTransformMatrix({rotate, x, y, width, height}) {
+        if (rotate) {
+            let centerX = width / 2 + x;
+            let centerY = height / 2 + y;
+            return `rotate(${rotate} ${centerX} ${centerY})`;
+        }
+    }
+
+    getObjectAttributes() {
+        let {object, onRender, ...rest} = this.props;
+        let result = {
+            ...object,
+            transform: this.getTransformMatrix(object),
+            ref: onRender,
+            ...rest
+        };
+        this.constructor.DEPRECATED_ATTRS.forEach(key => delete result[key]);
+        return result;
+    }
+
 }

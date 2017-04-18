@@ -20,11 +20,8 @@ export default class Rect extends Vector {
         }
     };
 
-    getObjectAttributes(){
-        let attr = super.getObjectAttributes();
-        let toRemove = ['index', 'blendMode'];
-        toRemove.forEach(key => delete attr[key]);
-        return attr
+    static get DEPRECATED_ATTRS (){
+        return ['index', 'blendMode'];
     }
 
     render() {
