@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Radium from 'radium';
 import Icon from './Icon';
+import { toCSS, rotateDEG, transform, translate } from 'transformation-matrix';
+
 
 function ScaleAnchor(props) {
   let {boundingBox} = props;
@@ -46,14 +48,29 @@ class Handler extends Component {
 
   render() {
     let {props} = this;
-    let {boundingBox} = props;
+    let {boundingBox, value} = props;
+
+    // console.log('**', value)
+
+      // value.a = 0;
+
+      // TODO: fixed error
+
+    value = transform(
+        value,
+        // translate(TODO: ????),
+        rotateDEG(boundingBox.rotate)
+    );
+
+    // console.log('*****', boundingBox);
 
     let handlerStyle = {
       ...styles.handler,
       ...boundingBox,
-      left: boundingBox.left - 2,
+      left: boundingBox.left - 2 ,
       top: boundingBox.top - 2,
-      transform: `rotate(${boundingBox.rotate}deg)`
+      // transform: `rotate(${boundingBox.rotate}deg)`
+      transform: toCSS(value)
     };
 
     return (

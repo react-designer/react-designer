@@ -38,17 +38,18 @@ class Designer extends Component {
     }
 
   state = {
-    mode: modes.FREE,
-    handler: {
-      top: 200,
-      left: 200,
-      width: 50,
-      height: 50,
-      rotate: 0
-    },
-    currentObjectIndex: null,
-    selectedObjectIndex: null,
-    selectedTool: null
+      mode: modes.FREE,
+      handler: {
+          top: 200,
+          left: 200,
+          width: 50,
+          height: 50,
+          rotate: 0
+      },
+      currentObjectIndex: null,
+      selectedObjectIndex: null,
+      selectedTool: null,
+      value: null
   };
 
   keyMap = {
@@ -236,7 +237,7 @@ class Designer extends Component {
     }
     
     this.setState({
-      handler: handler
+      handler
     });
   }
 
@@ -378,13 +379,15 @@ class Designer extends Component {
     return (
         <ReactSVGPanZoom
             style={{outline: "1px solid black"}}
-            width={500}
-            height={500}
+            width={width}
+            height={height}
             ref={Viewer => this.Viewer = Viewer}
-            onClick={event => console.log('click', event.x, event.y, event.originalEvent)}
-            onMouseMove={event => console.log('move', event.x, event.y)}
+            onChangeValue={value => {
+                this.setState({value})
+            }}
         >
-          <svg width={width} height={height}><SVGRenderer
+          <svg width={width} height={height}>
+            <SVGRenderer
                 background={background}
                 width={width}
                 canvas={canvas}
@@ -561,7 +564,9 @@ class Designer extends Component {
               onDoubleClick={this.showEditor.bind(this)}
               onDrag={this.startDrag.bind(this, modes.DRAG)}
               onResize={this.startDrag.bind(this, modes.SCALE)}
-              onRotate={this.startDrag.bind(this, modes.ROTATE)} /> )}
+              onRotate={this.startDrag.bind(this, modes.ROTATE)}
+              value={this.state.value}
+            /> )}
           
           {InsertMenuComponent && (
             <InsertMenuComponent tools={objectTypes}
@@ -569,16 +574,18 @@ class Designer extends Component {
               onSelect={this.selectTool.bind(this)} />
           )}
 
+            {showPropertyPanel && (
+                <PanelList
+                    offset={this.getOffset()}
+                    object={objectWithInitial}
+                    onArrange={this.handleArrange.bind(this)}
+                    onChange={this.handleObjectChange.bind(this)}
+                    objectComponent={objectComponent} />
+            )}
+
           {this.renderSVG()}
 
-          {showPropertyPanel && (
-            <PanelList
-              offset={this.getOffset()}
-              object={objectWithInitial}
-              onArrange={this.handleArrange.bind(this)}
-              onChange={this.handleObjectChange.bind(this)}
-              objectComponent={objectComponent} />
-          )}
+
         </div>
       </HotKeys>
     );

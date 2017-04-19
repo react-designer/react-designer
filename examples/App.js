@@ -9,8 +9,6 @@ import MalevichExample from './components/Malevich';
 import SwissStyleExample from './components/SwissStyle';
 import MockupDesignerExample from './components/MockupDesigner';
 import TshirtDesignerExample from './components/TshirtDesigner';
-import PreviewEx from './components/Preview'
-
 
 export default class App extends Component {
   render() {
@@ -70,17 +68,6 @@ class App() {
           </div>
           <div className={classes.preview}>
             <MondrianExample />
-          </div>
-        </div>
-
-
-
-        <div className={classes.example}>
-          <div className={classes.info}>
-            <h3>Preview</h3>
-          </div>
-          <div className={classes.preview}>
-            <PreviewEx />
           </div>
         </div>
 
