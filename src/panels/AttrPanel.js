@@ -12,7 +12,7 @@ import Columns from './Columns';
 import Column from './Column';
 
 
-export default class MyPanel extends Panel {
+export default class AttrPanel extends Panel {
     render() {
         let { object, onChange } = this.props;
         return (

@@ -4,7 +4,7 @@ import Icon from '../Icon';
 import _ from 'lodash';
 
 import {SizePanel, TextPanel, 
-        StylePanel, ArrangePanel, MyPanel} from '../panels';
+        StylePanel, ArrangePanel, AttrPanel} from '../panels';
 
 
 export default class Vector extends Component {
@@ -18,7 +18,7 @@ export default class Vector extends Component {
         TextPanel,
         StylePanel,
         ArrangePanel,
-        MyPanel
+        AttrPanel
     ];
 
     getStyle() {

@@ -12,6 +12,8 @@ import {modes} from './constants';
 import * as actions from './actions';
 import {Text, Path, Rect, Circle} from './objects';
 import PanelList from './panels/PanelList';
+import { ReactSVGPanZoom } from 'react-svg-pan-zoom';
+
 
 class Designer extends Component {
   static defaultProps = {
@@ -25,6 +27,15 @@ class Designer extends Component {
     svgStyle: {},
     insertMenu: InsertMenu
   };
+
+    constructor(props, context) {
+        super(props, context);
+        this.Viewer = null;
+    }
+
+    componentDidMount() {
+        this.Viewer.fitToViewer();
+    }
 
   state = {
     mode: modes.FREE,
@@ -365,17 +376,27 @@ class Designer extends Component {
     let {background, objects, svgStyle, objectTypes} = this.props;
 
     return (
-      <SVGRenderer 
-         background={background}
-         width={width}
-         canvas={canvas}
-         height={height}
-         objects={objects}
-         onMouseOver={this.showHandler.bind(this)}
-         objectTypes={objectTypes}
-         objectRefs={this.objectRefs}
-         onRender={(ref) => this.svgElement = ref}
-         onMouseDown={this.newObject.bind(this)} />
+        <ReactSVGPanZoom
+            style={{outline: "1px solid black"}}
+            width={500}
+            height={500}
+            ref={Viewer => this.Viewer = Viewer}
+            onClick={event => console.log('click', event.x, event.y, event.originalEvent)}
+            onMouseMove={event => console.log('move', event.x, event.y)}
+        >
+          <svg width={width} height={height}><SVGRenderer
+                background={background}
+                width={width}
+                canvas={canvas}
+                height={height}
+                objects={objects}
+                onMouseOver={this.showHandler.bind(this)}
+                objectTypes={objectTypes}
+                objectRefs={this.objectRefs}
+                onRender={(ref) => this.svgElement = ref}
+                onMouseDown={this.newObject.bind(this)} />
+          </svg>
+        </ReactSVGPanZoom>
     );
   }
 

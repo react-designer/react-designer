@@ -3,4 +3,4 @@ export ArrangePanel from './ArrangePanel';
 export StylePanel from './StylePanel';
 export SizePanel from './SizePanel';
 export InsertMenu from './InsertMenu';
-export MyPanel from './MyPanel'
+export AttrPanel from './AttrPanel'

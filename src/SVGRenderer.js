@@ -39,13 +39,13 @@ class SVGRenderer extends Component {
     ];
 
     return (
-      <svg onMouseDown={onMouseDown}
-         ref={onRender}
-         width={width} 
-         height={height}
-         style={style}>
-        {objects.map(this.renderObject.bind(this))}
-      </svg>
+        <svg onMouseDown={onMouseDown}
+             ref={onRender}
+             width={width}
+             height={height}
+             style={style}>
+            {objects.map(this.renderObject.bind(this))}
+        </svg>
     );
   }
 }
