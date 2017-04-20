@@ -204,6 +204,14 @@ class Designer extends Component {
     };
   }
 
+  getPanelOffset() {
+    let offset = this.getOffset(),
+        value = this.state.value;
+    offset.x = offset.x - value.e;
+    offset.y = offset.y - value.f;
+    return offset;
+  }
+
   applyOffset(bundle) {
     let offset = this.getOffset();
     return {
@@ -567,7 +575,7 @@ class Designer extends Component {
               onRotate={this.startDrag.bind(this, modes.ROTATE)}
               value={this.state.value}
             /> )}
-          
+
           {InsertMenuComponent && (
             <InsertMenuComponent tools={objectTypes}
               currentTool={selectedTool}
@@ -576,7 +584,7 @@ class Designer extends Component {
 
             {showPropertyPanel && (
                 <PanelList
-                    offset={this.getOffset()}
+                    offset={this.getPanelOffset()}
                     object={objectWithInitial}
                     onArrange={this.handleArrange.bind(this)}
                     onChange={this.handleObjectChange.bind(this)}

@@ -2,19 +2,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Radium from 'radium';
 import Icon from './Icon';
-import { toCSS, rotateDEG, transform, translate } from 'transformation-matrix';
 
 
 function ScaleAnchor(props) {
   let {boundingBox} = props;
-  let style = {
-    marginTop: boundingBox.height - 4,
-    marginLeft: boundingBox.width - 4
-  };
   return (
-    <div style={[styles.anchor, 
-                 styles.scaleAnchor,
-                 style]}
+    <div style={props.style}
          className={'resize-anchor'}
          onMouseDown={props.onMouseDown} />
   );
@@ -23,13 +16,8 @@ function ScaleAnchor(props) {
 ScaleAnchor = Radium(ScaleAnchor);
 
 function RotateAnchor(props) {
-  let style = {
-    marginLeft: props.boundingBox.width - 3
-  };
   return (
-    <div style={[styles.anchor,
-                 styles.rotateAnchor, 
-                 style]}
+    <div style={props.style}
          className={'rotate-anchor'}
          onMouseDown={props.onMouseDown} />
   )
@@ -50,27 +38,39 @@ class Handler extends Component {
     let {props} = this;
     let {boundingBox, value} = props;
 
-    // console.log('**', value)
+    let transformHandlerStyle = {
+      width: boundingBox.width * value.a,
+      height: boundingBox.height * value.d,
+      left: boundingBox.left * value.a + value.e,
+      top: boundingBox.top * value.d + value.f
+    }
 
-      // value.a = 0;
-
-      // TODO: fixed error
-
-    value = transform(
-        value,
-        // translate(TODO: ????),
-        rotateDEG(boundingBox.rotate)
-    );
-
-    // console.log('*****', boundingBox);
+    let transformAnchorStyle = {
+      width: styles.anchor.width * value.a,
+      height: styles.anchor.height * value.d,
+    }
 
     let handlerStyle = {
       ...styles.handler,
       ...boundingBox,
-      left: boundingBox.left - 2 ,
-      top: boundingBox.top - 2,
-      // transform: `rotate(${boundingBox.rotate}deg)`
-      transform: toCSS(value)
+      ...transformHandlerStyle,
+      transform: `rotate(${boundingBox.rotate}deg)`
+    };
+
+    let scaleAnchorStyle = {
+      ...styles.anchor,
+      ...styles.scaleAnchor,
+      marginTop: (boundingBox.height - 4) * value.d,
+      marginLeft: (boundingBox.width - 4) * value.a,
+      ...transformAnchorStyle
+    };
+
+    let rotateAnchorStyle = {
+      ...styles.anchor,
+      ...styles.rotateAnchor,
+      marginTop: styles.rotateAnchor.marginTop * value.a,
+      marginLeft: (props.boundingBox.width - 3) * value.a,
+      ...transformAnchorStyle
     };
 
     return (
@@ -80,10 +80,12 @@ class Handler extends Component {
         onDoubleClick={props.onDoubleClick}
         onMouseDown={this.onMouseDown.bind(this)}>
           {props.canRotate &&
-            <RotateAnchor onMouseDown={props.onRotate} 
+            <RotateAnchor style={rotateAnchorStyle}
+                          onMouseDown={props.onRotate} 
                           boundingBox={boundingBox} />}
           {props.canResize && 
-            <ScaleAnchor onMouseDown={props.onResize}
+            <ScaleAnchor style={scaleAnchorStyle}
+                         onMouseDown={props.onResize}
                          boundingBox={boundingBox} />}
       </div>
     );
@@ -97,7 +99,7 @@ const styles = {
     'zIndex': 999999
   },
   anchor: {
-    'width': 10, 
+    'width': 10,
     'height': 10,
     ':hover': {
       'borderColor': 'gray'
