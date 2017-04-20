@@ -124,14 +124,18 @@ export default class extends Component {
   render() {
     return (
         <div>
-      <Designer
-          ref={(ref) => this.designer = ref}
-        width={350} height={400}
-        objects={this.state.objects}
-        onUpdate={this.handleUpdate.bind(this)}/>
           <p>
             <a href="#" onClick={this.download.bind(this)}>Export SVG</a>
           </p>
+          <Designer
+              ref={(ref) => this.designer = ref}
+              width={800}
+              height={800}
+              objects={this.state.objects}
+              onUpdate={this.handleUpdate.bind(this)}
+              zoomWidth={500}
+              zoomHeight={500}
+          />
         </div>
     );
   }
