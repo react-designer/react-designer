@@ -195,12 +195,12 @@ class Designer extends Component {
 
   getOffset() {
     let parent = this.svgElement.getBoundingClientRect();
-    let {canvasWidth, canvasHeight} = this.getCanvas();
+    let {zoomWidth, zoomHeight} = this.getCanvas();
     return {
-      x: parent.left,
-      y: parent.top,
-      width: canvasWidth,
-      height: canvasHeight
+        x: parent.left,
+        y: parent.top,
+        width: zoomWidth,
+        height: zoomHeight,
     };
   }
 
@@ -367,13 +367,13 @@ class Designer extends Component {
   }
 
   getCanvas() {
-    let {width, height} = this.props;
+    let {width, height, zoomWidth, zoomHeight} = this.props;
     let {
-      canvasWidth=width, 
+      canvasWidth=width,
       canvasHeight=height
     } = this.props;
     return {
-      width, height, canvasWidth, canvasHeight,
+      width, height, canvasWidth, canvasHeight, zoomWidth, zoomHeight,
       canvasOffsetX: (canvasWidth - width) / 2,
       canvasOffsetY: (canvasHeight - height) / 2
     };
@@ -382,13 +382,13 @@ class Designer extends Component {
   renderSVG() {
     let canvas = this.getCanvas();
     let {width, height, canvasOffsetX, canvasOffsetY} = canvas;
-    let {background, objects, svgStyle, objectTypes} = this.props;
+    let {background, objects, svgStyle, objectTypes, zoomWidth, zoomHeight} = this.props;
 
     return (
         <ReactSVGPanZoom
             style={{outline: "1px solid black"}}
-            width={width}
-            height={height}
+            width={zoomWidth}
+            height={zoomHeight}
             ref={Viewer => this.Viewer = Viewer}
             onChangeValue={value => {
                 this.setState({value})
@@ -514,7 +514,7 @@ class Designer extends Component {
 
   render() {
     let {showHandler, handler, mode,
-         selectedObjectIndex, selectedTool} = this.state;
+         selectedObjectIndex, selectedTool, zoomWidth, zoomHeight} = this.state;
     
     let {
       objects, 
@@ -547,8 +547,8 @@ class Designer extends Component {
              style={{
                 ...styles.container,
                 ...this.props.style,
-                width: canvasWidth,
-                height: canvasHeight
+                width: zoomWidth,
+                height: zoomHeight
              }} 
              onMouseMove={this.onDrag.bind(this)}
              onMouseUp={this.stopDrag.bind(this)}>
