@@ -382,7 +382,7 @@ class Designer extends Component {
   renderSVG() {
     let canvas = this.getCanvas();
     let {width, height, canvasOffsetX, canvasOffsetY} = canvas;
-    let {background, objects, svgStyle, objectTypes, zoomWidth, zoomHeight} = this.props;
+    let {background, objects, svgStyle, objectTypes, zoomWidth, zoomHeight, svgBackground} = this.props;
 
     return (
         <ReactSVGPanZoom
@@ -397,6 +397,7 @@ class Designer extends Component {
           <svg width={width} height={height}>
             <SVGRenderer
                 background={background}
+                svgBackground={svgBackground}
                 width={width}
                 canvas={canvas}
                 height={height}
