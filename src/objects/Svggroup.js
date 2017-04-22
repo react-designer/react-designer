@@ -25,12 +25,22 @@ export default class Svggroup extends Vector {
     render() {
         let {object, index} = this.props;
         return (
-            <ellipse style={this.getStyle()}
-                     {...this.getObjectAttributes()}
-                     rx={object.width / 2}
-                     ry={object.height / 2}
-                     cx={object.x + object.width / 2}
-                     cy={object.y + object.height / 2} />
+            <g
+                {...this.getObjectAttributes()}
+            >
+                <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+            </g>
         );
     }
 }
+
+/*
+
+<ellipse style={this.getStyle()}
+         {...this.getObjectAttributes()}
+         rx={object.width / 2}
+         ry={object.height / 2}
+         cx={object.x + object.width / 2}
+         cy={object.y + object.height / 2} />
+
+*/

@@ -23,7 +23,7 @@ class SVGRenderer extends Component {
 
   render() {
     let {background, objects, svgStyle, canvas, 
-         onMouseDown, onRender, svgBackground} = this.props;
+         onMouseDown, onRender} = this.props;
     let {width, height, canvasOffsetX, canvasOffsetY} = canvas;
 
     let style = [
@@ -44,7 +44,6 @@ class SVGRenderer extends Component {
              width={width}
              height={height}
              style={style}>
-            {svgBackground}
             {objects.map(this.renderObject.bind(this))}
         </svg>
     );

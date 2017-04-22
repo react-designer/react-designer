@@ -18,16 +18,31 @@ class InsertMenu extends Component {
           : <Icon icon={"add"} size={30} />}
         </div>
         <ul style={styles.toolBox}>
-          {keys.map((type, i) => (
-            <li style={[
-              styles.toolBoxItem,
-              currentTool === type && styles.currentToolboxItem
-              ]}
-                onMouseDown={this.props.onSelect.bind(this, type)}
-                key={i}>
-              {tools[type].meta.icon}
-            </li>
-          ))}
+          {keys.map((type, i) => {
+            if ('Svggroup' === type) {
+                return (
+                    <li style={[
+                        styles.toolBoxItem,
+                        currentTool === type && styles.currentToolboxItem
+                    ]}
+                        onMouseDown={this.props.onSelect.bind(this, type)}
+                        key={i}>
+                        {tools[type].meta.icon}
+                    </li>
+                )
+            } else {
+                return (
+                    <li style={[
+                        styles.toolBoxItem,
+                        currentTool === type && styles.currentToolboxItem
+                    ]}
+                        onMouseDown={this.props.onSelect.bind(this, type)}
+                        key={i}>
+                        {tools[type].meta.icon}
+                    </li>
+                )
+            }
+          })}
         </ul>
       </div>
     );
