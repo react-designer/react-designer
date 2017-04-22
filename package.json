@@ -46,9 +46,11 @@
   },
   "dependencies": {
     "classnames": "^2.2.1",
+    "html-react-parser": "^0.3.3",
     "lodash": "^3.10.1",
     "radium": "^0.18.2",
     "react-color": "^1.3.0",
+    "react-file-reader-input": "^1.1.0",
     "react-hotkeys": "^0.9.0",
     "react-portal": "^3.0.0",
     "react-svg-pan-zoom": "^2.6.1"
