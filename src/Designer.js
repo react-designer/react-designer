@@ -10,7 +10,7 @@ import SVGRenderer from './SVGRenderer';
 import Handler from './Handler';
 import {modes} from './constants';
 import * as actions from './actions';
-import {Text, Path, Rect, Circle} from './objects';
+import {Text, Path, Rect, Circle, Svggroup} from './objects';
 import PanelList from './panels/PanelList';
 import { ReactSVGPanZoom } from 'react-svg-pan-zoom';
 
@@ -18,10 +18,11 @@ import { ReactSVGPanZoom } from 'react-svg-pan-zoom';
 class Designer extends Component {
   static defaultProps = {
     objectTypes: {
-      'text': Text,
-      'rectangle': Rect,
-      'circle': Circle,
-      'polygon': Path
+        'text': Text,
+        'rectangle': Rect,
+        'circle': Circle,
+        'polygon': Path,
+        'Svggroup': Svggroup
     },
     snapToGrid: 1,
     svgStyle: {},
