@@ -53,7 +53,9 @@ export default class Svggroup extends Vector {
         let svgElement = Parser(object.svgGroup, options);
 
         return (
-            <g {...attrs}>
+            <g
+                {...attrs}
+            >
                 {svgElement}
             </g>
         )

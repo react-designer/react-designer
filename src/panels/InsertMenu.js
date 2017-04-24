@@ -23,7 +23,11 @@ class InsertMenu extends Component {
           {keys.map((type, i) => {
             if ('svgGroup' === type) {
                 return (
-                    <FileReaderInput as="binary" id="my-file-input" onChange={(e, results) => {
+                    <FileReaderInput
+                        as="binary"
+                        id="my-file-input"
+                        key={'FileReaderInput'}
+                        onChange={(e, results) => {
                         results.forEach(result => {
                             const [e, file] = result;
                             this.props.onSelect(type, e.target.result)
