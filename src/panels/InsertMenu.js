@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import Radium from 'radium';
 import Icon from '../Icon';
+import FileReaderInput from 'react-file-reader-input';
+
 
 class InsertMenu extends Component {
 
@@ -19,16 +21,22 @@ class InsertMenu extends Component {
         </div>
         <ul style={styles.toolBox}>
           {keys.map((type, i) => {
-            if ('Svggroup' === type) {
+            if ('svgGroup' === type) {
                 return (
-                    <li style={[
-                        styles.toolBoxItem,
-                        currentTool === type && styles.currentToolboxItem
-                    ]}
-                        onMouseDown={this.props.onSelect.bind(this, type)}
-                        key={i}>
-                        {tools[type].meta.icon}
-                    </li>
+                    <FileReaderInput as="binary" id="my-file-input" onChange={(e, results) => {
+                        results.forEach(result => {
+                            const [e, file] = result;
+                            this.props.onSelect(type, e.target.result)
+                        });
+                    }}>
+                      <li style={[
+                          styles.toolBoxItem,
+                          currentTool === type && styles.currentToolboxItem
+                      ]}
+                          key={i}>
+                          {tools[type].meta.icon}
+                      </li>
+                    </FileReaderInput>
                 )
             } else {
                 return (

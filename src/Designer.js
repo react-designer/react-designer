@@ -22,7 +22,7 @@ class Designer extends Component {
         'rectangle': Rect,
         'circle': Circle,
         'polygon': Path,
-        'Svggroup': Svggroup
+        'svgGroup': Svggroup
     },
     snapToGrid: 1,
     svgStyle: {},
@@ -50,7 +50,8 @@ class Designer extends Component {
       currentObjectIndex: null,
       selectedObjectIndex: null,
       selectedTool: null,
-      value: null
+      value: null,
+      svgGroup: null
   };
 
   keyMap = {
@@ -135,13 +136,18 @@ class Designer extends Component {
     let mouse = this.getMouseCoords(event);
     
     let {objects, onUpdate} = this.props;
+
     let object = {
       ...meta.initial,
       type: selectedTool,
       x: mouse.x,
-      y: mouse.y
+      y: mouse.y,
     };
-   
+
+    if (this.state.selectedTool === 'svgGroup') {
+        object.svgGroup = this.state.svgGroup
+    }
+
     onUpdate([...objects, object]);
 
     this.setState({
@@ -412,13 +418,14 @@ class Designer extends Component {
     );
   }
 
-  selectTool(tool) {
+  selectTool(tool, svgGroup = null) {
     this.setState({
-      selectedTool: tool,
-      mode: modes.DRAW,
-      currentObjectIndex: null,
-      showHandler: false,
-      handler: null
+        selectedTool: tool,
+        mode: modes.DRAW,
+        currentObjectIndex: null,
+        showHandler: false,
+        handler: null,
+        svgGroup
     });
   }
 

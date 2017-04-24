@@ -2,15 +2,17 @@ import React, {Component} from 'react';
 import {modes} from '../constants';
 import Icon from '../Icon';
 import _ from 'lodash';
-
+import Parser from 'html-react-parser';
+import domToReact from 'html-react-parser/lib/dom-to-react';
 import Vector from './Vector';
+
 
 export default class Svggroup extends Vector {
     static meta = {
         icon: <center style={{color: "gray"}}>Svg</center>,
         initial: {
-            width: 5,
-            height: 5,
+            width: 200,
+            height: 200,
             rotate: 0,
             fill: "yellow",
             strokeWidth: 0,
@@ -19,18 +21,42 @@ export default class Svggroup extends Vector {
     };
 
     static get DEPRECATED_ATTRS (){
-        return ['index', 'blendMode'];
+        return ['index', 'blendMode', 'svgGroup'];
+    }
+
+    updateState(state, item) {
+        return Object.assign({}, state, {[item.id]: item});
     }
 
     render() {
-        let {object, index} = this.props;
+        let {object, index} = this.props,
+            attrs = this.getObjectAttributes();
+
+        const options = {
+            replace: (domNode) => {
+                if (domNode.name === 'svg') {
+                    return (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            {...attrs}
+                            viewBox={`0 0 ${attrs.width} ${attrs.height}`}
+                        >
+                            {domToReact(domNode.children, options)}
+                        </svg>
+                    );
+                } else {
+                    return
+                }
+            }
+        };
+
+        let svgElement = Parser(object.svgGroup, options);
+
         return (
-            <g
-                {...this.getObjectAttributes()}
-            >
-                <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+            <g {...attrs}>
+                {svgElement}
             </g>
-        );
+        )
     }
 }
 
