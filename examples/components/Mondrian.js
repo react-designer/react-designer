@@ -31,11 +31,26 @@ export default class extends Component {
         window.open(uri)
     }
 
+    exportObj(){
+        event.preventDefault();
+        let svgObg = '';
+        this.designer.props.objects.forEach(object => {
+            svgObg += JSON.stringify(object)
+        });
+        svgObg = svgObg.replace(/</g,'&lt;');
+        svgObg = svgObg.replace(/>/g,'&gt;');
+        let newWin = window.open("", "", "width=200,height=200");
+        newWin.document.write(svgObg);
+    }
+
     render() {
         return (
             <div>
                 <p>
                     <a href="#" onClick={this.download.bind(this)}>Export SVG</a>
+                </p>
+                <p>
+                    <a href="#" onClick={this.exportObj.bind(this)}>Export Objects</a>
                 </p>
                 <Designer
                     ref={(ref) => this.designer = ref}
