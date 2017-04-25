@@ -11,11 +11,9 @@ export default class Svggroup extends Vector {
     static meta = {
         icon: <center style={{color: "gray"}}>Svg</center>,
         initial: {
-            width: 200,
-            height: 200,
+            width: 360,
+            height: 360,
             rotate: 0,
-            fill: "yellow",
-            strokeWidth: 0,
             blendMode: "normal"
         }
     };
@@ -39,7 +37,8 @@ export default class Svggroup extends Vector {
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             {...attrs}
-                            viewBox={`0 0 ${attrs.width} ${attrs.height}`}
+                            viewBox={domNode.attribs.viewBox}
+                            preserveAspectRatio="none meet"
                         >
                             {domToReact(domNode.children, options)}
                         </svg>
@@ -61,14 +60,3 @@ export default class Svggroup extends Vector {
         )
     }
 }
-
-/*
-
-<ellipse style={this.getStyle()}
-         {...this.getObjectAttributes()}
-         rx={object.width / 2}
-         ry={object.height / 2}
-         cx={object.x + object.width / 2}
-         cy={object.y + object.height / 2} />
-
-*/

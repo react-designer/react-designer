@@ -25,28 +25,29 @@ export default class extends Component {
         event.preventDefault();
         let svgElement = this.designer.svgElement;
         svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-        let source = svgElement.outerHTML;
-        let uri = 'data:image/svg+xml;base64,' + btoa(source);
+        let source = svgElement.outerHTML,
+            svg = source.replace(/[&]nbsp[;]/gi, " "),
+            uri = 'data:image/svg+xml;base64,' + btoa(svg);
         window.open(uri)
     }
 
-  render() {
-    return (
-        <div>
-          <p>
-            <a href="#" onClick={this.download.bind(this)}>Export SVG</a>
-          </p>
-          <Designer
-              ref={(ref) => this.designer = ref}
-              width={1800}
-              height={1800}
-              objects={this.state.objects}
-              onUpdate={this.handleUpdate.bind(this)}
-              zoomWidth={500}
-              zoomHeight={500}
-              background={"transparent"}
-          />
-        </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <p>
+                    <a href="#" onClick={this.download.bind(this)}>Export SVG</a>
+                </p>
+                <Designer
+                    ref={(ref) => this.designer = ref}
+                    width={1800}
+                    height={1800}
+                    objects={this.state.objects}
+                    onUpdate={this.handleUpdate.bind(this)}
+                    zoomWidth={500}
+                    zoomHeight={500}
+                    background={"transparent"}
+                />
+            </div>
+        );
+    }
 }
