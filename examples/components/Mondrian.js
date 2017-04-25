@@ -2,24 +2,25 @@ import React, { Component } from 'react';
 import Designer from '../../src/Designer';
 
 export default class extends Component {
-  state = {
-    objects: [{
-      "width": 163,
-      "height": 84,
-      "rotate": 0,
-      "strokeWidth": 0,
-      "fill": "rgba(0, 123, 255, 1)",
-      "radius": "0",
-      "blendMode": "normal",
-      "type": "rectangle",
-      "x": 17,
-      "y": 15
-    }]
-  };
+    state = {
+        objects: [{
+            "width": 163,
+            "height": 84,
+            "rotate": 0,
+            "strokeWidth": 0,
+            "fill": "rgba(0, 123, 255, 1)",
+            "radius": "0",
+            "blendMode": "normal",
+            "type": "rectangle",
+            "x": 17,
+            "y": 15
+        }],
+        importObj: ''
+    };
 
-  handleUpdate(objects) {
-    this.setState({objects});
-  }
+    handleUpdate(objects) {
+        this.setState({objects});
+    }
 
     download(event) {
         event.preventDefault();
@@ -31,21 +32,42 @@ export default class extends Component {
         window.open(uri)
     }
 
-    exportObj(){
+    exportObj() {
         event.preventDefault();
-        let svgObg = '';
-        this.designer.props.objects.forEach(object => {
-            svgObg += JSON.stringify(object)
-        });
-        svgObg = svgObg.replace(/</g,'&lt;');
-        svgObg = svgObg.replace(/>/g,'&gt;');
+        let svgObg = JSON.stringify(this.designer.props.objects);
+        svgObg = svgObg.replace(/</g, '&lt;');
+        svgObg = svgObg.replace(/>/g, '&gt;');
         let newWin = window.open("", "", "width=200,height=200");
         newWin.document.write(svgObg);
+    }
+
+    openDesigner() {
+        let impObj = JSON.parse(this.state.importObj);
+        this.setState({
+            objects: impObj
+        })
     }
 
     render() {
         return (
             <div>
+                <textarea
+                    style={{
+                        width: 500,
+                        height: 500
+                    }}
+                    value={this.state.importObj}
+                    onChange={e => {
+                        this.setState({
+                            importObj: e.target.value
+                        })
+                    }}
+                >
+
+                </textarea>
+                <p>
+                    <a href="#" onClick={this.openDesigner.bind(this)}>Import Svg</a>
+                </p>
                 <p>
                     <a href="#" onClick={this.download.bind(this)}>Export SVG</a>
                 </p>
