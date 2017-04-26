@@ -12,6 +12,7 @@ import SwitchState from './SwitchState';
 import Columns from './Columns';
 import Column from './Column';
 
+
 export default class SizePanel extends Panel {
   render() {
     let {object} = this.props;
@@ -25,6 +26,26 @@ export default class SizePanel extends Panel {
                   value={object.height}
                   onChange={this.props.onChange.bind(this, 'height')} />
         </Columns>}
+          {_.has(object, 'viewBoxWidth', 'viewBoxHeight') && <Columns label="Fixed">
+              <button
+                  onClick={
+                      () => {
+                          let scale = object.viewBoxHeight/object.viewBoxWidth;
+                          let fixedHeight = Math.floor(object.width*scale);
+                          this.props.onChange('height', fixedHeight)
+                      }
+                  }
+              >fix to width</button>
+              <button
+                  onClick={
+                      () => {
+                          let scale = object.viewBoxHeight/object.viewBoxWidth;
+                          let fixedWidth = Math.floor(object.height*scale);
+                          this.props.onChange('width', fixedWidth)
+                      }
+                  }
+              >fix to height</button>
+          </Columns>}
         <Columns label="Position">
           <Column showIf={_.has(object, 'x')} 
                   label="top" value={object.x}

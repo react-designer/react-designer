@@ -14,12 +14,14 @@ export default class Svggroup extends Vector {
             width: 360,
             height: 360,
             rotate: 0,
-            blendMode: "normal"
+            blendMode: "normal",
+            viewBoxWidth: 0,
+            viewBoxHeight: 0,
         }
     };
 
     static get DEPRECATED_ATTRS (){
-        return ['index', 'blendMode', 'svgGroup'];
+        return ['index', 'blendMode', 'svgGroup', 'viewBoxHeight', 'viewBoxWidth'];
     }
 
     updateState(state, item) {
@@ -30,9 +32,13 @@ export default class Svggroup extends Vector {
         let {object, index} = this.props,
             attrs = this.getObjectAttributes();
 
+        console.log('!!', object)
+
         const options = {
             replace: (domNode) => {
                 if (domNode.name === 'svg') {
+                    object.viewBoxWidth = parseInt(domNode.attribs.viewBox.split(' ')[2]);
+                    object.viewBoxHeight = parseInt(domNode.attribs.viewBox.split(' ')[3]);
                     return (
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
