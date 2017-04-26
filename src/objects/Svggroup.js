@@ -31,9 +31,7 @@ export default class Svggroup extends Vector {
     render() {
         let {object, index} = this.props,
             attrs = this.getObjectAttributes();
-
-        console.log('!!', object)
-
+        
         const options = {
             replace: (domNode) => {
                 if (domNode.name === 'svg') {
