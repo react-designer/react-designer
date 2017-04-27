@@ -9,7 +9,7 @@ import Vector from './Vector';
 
 export default class Svggroup extends Vector {
     static meta = {
-        icon: <center style={{color: "gray"}}>Svg</center>,
+        icon: <center style={{color: "gray"}}>SVG</center>,
         initial: {
             width: 360,
             height: 360,
@@ -21,7 +21,7 @@ export default class Svggroup extends Vector {
     };
 
     static get DEPRECATED_ATTRS (){
-        return ['index', 'blendMode', 'svgGroup', 'viewBoxHeight', 'viewBoxWidth'];
+        return ['index', 'svgGroup', 'blendMode', 'viewBoxHeight', 'viewBoxWidth'];
     }
 
     updateState(state, item) {
@@ -35,8 +35,6 @@ export default class Svggroup extends Vector {
         const options = {
             replace: (domNode) => {
                 if (domNode.name === 'svg') {
-                    object.viewBoxWidth = parseInt(domNode.attribs.viewBox.split(' ')[2]);
-                    object.viewBoxHeight = parseInt(domNode.attribs.viewBox.split(' ')[3]);
                     return (
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -58,6 +56,9 @@ export default class Svggroup extends Vector {
         return (
             <g
                 {...attrs}
+                style={{
+                    'mixBlendMode': object.blendMode
+                }}
             >
                 {svgElement}
             </g>

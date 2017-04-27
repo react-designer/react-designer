@@ -145,7 +145,21 @@ class Designer extends Component {
     };
 
     if (this.state.selectedTool === 'svgGroup') {
-        object.svgGroup = this.state.svgGroup
+
+        object.svgGroup = this.state.svgGroup;
+
+        let regex = /<svg(?:.|[\r\n])*?viewBox=["\'](.*?)["\']/,
+            match = regex.exec(object.svgGroup);
+
+        if ( match ) {
+            match = match[1].split(' ');
+            object.width = object.viewBoxWidth = parseInt(match[2]);
+            object.height = object.viewBoxHeight = parseInt(match[3]);
+        } else {
+            object.viewBoxWidth = object.width;
+            object.viewBoxHeight = object.height;
+        }
+
     }
 
     onUpdate([...objects, object]);
