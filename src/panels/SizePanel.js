@@ -83,6 +83,10 @@ export default class SizePanel extends Panel {
           <Column label="angle" value={object.rotate}
                   onChange={this.props.onChange.bind(this, 'rotate')} />
         </Columns>}
+        {_.has(object, 'opacity') && <Columns label="Opacity">
+              <Column label="opacity" value={object.opacity}
+                      onChange={this.props.onChange.bind(this, 'opacity')} />
+          </Columns>}
       </PropertyGroup>
     );
   }

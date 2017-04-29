@@ -17,6 +17,7 @@ export default class Svggroup extends Vector {
             blendMode: "normal",
             viewBoxWidth: 0,
             viewBoxHeight: 0,
+            opacity: 1
         }
     };
 
