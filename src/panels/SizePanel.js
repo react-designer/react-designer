@@ -27,27 +27,25 @@ export default class SizePanel extends Panel {
     return (
       <PropertyGroup object={object}>
         {_.has(object, 'width', 'height') && <Columns label="Size">
-            <div style={[styles.row, {paddingTop: 5, paddingRight: 10}]}>
-                    <input label="width"
-                           value={object.width}
-                           style={[styles.input, styles.textInput]}
-                           onChange={e => {
-                               if ( this.state.isChecked ) {
-                                   let scale = object.viewBoxHeight/object.viewBoxWidth;
-                                   let fixedHeight = Math.floor(e.target.value*scale);
-                                   this.props.onChange({
-                                       'width': e.target.value,
-                                       'height': fixedHeight.toString()
-                                   })
-                               } else {
-                                   this.props.onChange('width', e.target.value)
-                               }
-                           }} />
+            <div style={[styles.column]}>
+                <input style={[styles.input, styles.integerInput]} value={object.width}
+                       onChange={e => {
+                           if ( this.state.isChecked ) {
+                               let scale = object.viewBoxHeight/object.viewBoxWidth;
+                               let fixedHeight = Math.floor(e.target.value*scale);
+                               this.props.onChange({
+                                   'width': e.target.value,
+                                   'height': fixedHeight.toString()
+                               })
+                           } else {
+                               this.props.onChange('width', e.target.value)
+                           }
+                       }} />
+                <div style={styles.inputHelper}>width</div>
             </div>
-            <div style={[styles.row, {paddingTop: 5, paddingRight: 10}]}>
-                <input label="height"
+            <div style={[styles.column]}>
+                <input style={[styles.input, styles.integerInput]}
                        value={object.height}
-                       style={[styles.input, styles.textInput]}
                        onChange={e => {
                            if ( this.state.isChecked ) {
                                let scale = object.viewBoxHeight/object.viewBoxWidth;
@@ -60,6 +58,7 @@ export default class SizePanel extends Panel {
                                this.props.onChange('height', e.target.value)
                            }
                        }} />
+                <div style={styles.inputHelper}>height</div>
             </div>
         </Columns>}
           {_.has(object, 'viewBoxWidth', 'viewBoxHeight') && <Columns label="Fixed">
