@@ -445,7 +445,7 @@ class Designer extends Component {
 
   handleObjectChange(key, value) {
     let {selectedObjectIndex} = this.state;
-    this.updateObject(selectedObjectIndex, {
+    this.updateObject(selectedObjectIndex, (typeof key == 'object') ? key : {
       [key]: value
     });
   }

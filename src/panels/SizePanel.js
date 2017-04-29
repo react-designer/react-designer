@@ -14,37 +14,64 @@ import Column from './Column';
 
 
 export default class SizePanel extends Panel {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isChecked: true,
+        };
+    }
+
   render() {
-    let {object} = this.props;
+    let { object, onChange } = this.props;
     return (
       <PropertyGroup object={object}>
         {_.has(object, 'width', 'height') && <Columns label="Size">
-          <Column showIf={_.has(object, 'width')} 
-                  label="width" value={object.width}
-                  onChange={this.props.onChange.bind(this, 'width')} />
-          <Column showIf={_.has(object, 'height')} label="height" 
-                  value={object.height}
-                  onChange={this.props.onChange.bind(this, 'height')} />
+            <div style={[styles.row, {paddingTop: 5, paddingRight: 10}]}>
+                    <input label="width"
+                           value={object.width}
+                           style={[styles.input, styles.textInput]}
+                           onChange={e => {
+                               if ( this.state.isChecked ) {
+                                   let scale = object.viewBoxHeight/object.viewBoxWidth;
+                                   let fixedHeight = Math.floor(e.target.value*scale);
+                                   this.props.onChange({
+                                       'width': e.target.value,
+                                       'height': fixedHeight.toString()
+                                   })
+                               } else {
+                                   this.props.onChange('width', e.target.value)
+                               }
+                           }} />
+            </div>
+            <div style={[styles.row, {paddingTop: 5, paddingRight: 10}]}>
+                <input label="height"
+                       value={object.height}
+                       style={[styles.input, styles.textInput]}
+                       onChange={e => {
+                           if ( this.state.isChecked ) {
+                               let scale = object.viewBoxHeight/object.viewBoxWidth;
+                               let fixedWidth = Math.floor(e.target.value*scale);
+                               this.props.onChange({
+                                   'height': e.target.value,
+                                   'width': fixedWidth.toString()
+                               })
+                           } else {
+                               this.props.onChange('height', e.target.value)
+                           }
+                       }} />
+            </div>
         </Columns>}
           {_.has(object, 'viewBoxWidth', 'viewBoxHeight') && <Columns label="Fixed">
-              <button
-                  onClick={
-                      () => {
-                          let scale = object.viewBoxHeight/object.viewBoxWidth;
-                          let fixedHeight = Math.floor(object.width*scale);
-                          this.props.onChange('height', fixedHeight)
-                      }
+              <input
+                  type='checkbox'
+                  checked={this.state.isChecked}
+                  onChange={
+                      () => this.setState({
+                          isChecked: !this.state.isChecked
+                      })
                   }
-              >fix to width</button>
-              <button
-                  onClick={
-                      () => {
-                          let scale = object.viewBoxHeight/object.viewBoxWidth;
-                          let fixedWidth = Math.floor(object.height*scale);
-                          this.props.onChange('width', fixedWidth)
-                      }
-                  }
-              >fix to height</button>
+              />
           </Columns>}
         <Columns label="Position">
           <Column showIf={_.has(object, 'x')} 
