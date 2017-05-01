@@ -3,6 +3,8 @@ import Radium from 'radium';
 import SVGRenderer from './SVGRenderer';
 
 import {Text, Path, Rect, Circle} from './objects';
+import { ReactSVGPanZoom } from 'react-svg-pan-zoom';
+
 
 class Preview extends Component {
   static defaultProps = {
@@ -36,15 +38,21 @@ class Preview extends Component {
    };
 
     return (
-      <div className={'container'} style={style}>
-        <SVGRenderer
-          width={width}
-          height={height}
-          objects={objects}
-          objectRefs={this.objectRefs}
-          objectTypes={objectTypes}
-          canvas={canvas} />
-      </div>
+        <ReactSVGPanZoom
+            style={{outline: "1px solid black"}}
+            width={width}
+            height={height}
+        >
+            <svg width={width} height={height}>
+                <SVGRenderer
+                    width={width}
+                    height={height}
+                    objects={objects}
+                    objectRefs={this.objectRefs}
+                    objectTypes={objectTypes}
+                    canvas={canvas} />
+            </svg>
+        </ReactSVGPanZoom>
     );
   }
 }

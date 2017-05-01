@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Designer from '../../src/Designer';
+import Preview from '../../src/Preview';
+
 
 export default class extends Component {
     state = {
@@ -51,6 +53,13 @@ export default class extends Component {
     render() {
         return (
             <div>
+
+                <Preview
+                    width={500}
+                    height={500}
+                    objects={this.state.objects}
+                />
+
                 <textarea
                     style={{
                         width: 500,
