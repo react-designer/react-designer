@@ -53,13 +53,7 @@ export default class extends Component {
     render() {
         return (
             <div>
-
-                <Preview
-                    width={500}
-                    height={500}
-                    objects={this.state.objects}
-                />
-
+                
                 <textarea
                     style={{
                         width: 500,
