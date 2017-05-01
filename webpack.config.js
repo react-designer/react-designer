@@ -22,7 +22,7 @@ module.exports = {
   ],
   module: {
     loaders: [
-        { test: /\.svg$/, loaders: ['babel?presets[]=react', 'svg-jsx'] },
+        { test: /\.svg$/, loader: 'babel?presets[]=es2015,presets[]=react!svg-react' },
         {test: /\.(png|svg)$/, loader: 'url-loader?limit=8192'},
         {
             test: /^((?!\.module).)*\.css$/,

@@ -54,6 +54,7 @@
     "react-hotkeys": "^0.9.0",
     "react-portal": "^3.0.0",
     "react-svg-pan-zoom": "^2.6.1",
-    "svg-jsx-loader": "0.0.16"
+    "svg-jsx-loader": "0.0.16",
+    "svg-react-loader": "^0.3.7"
   }
 }

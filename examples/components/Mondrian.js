@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Designer from '../../src/Designer';
-import MyComponent from '-!babel?presets[]=react!svg-jsx!./flat1.svg';
+import MyComponent from '-!babel!svg-react!./home1.svg';
 import { ReactSVGPanZoom } from 'react-svg-pan-zoom';
 
 
@@ -55,12 +55,14 @@ export default class extends Component {
         return (
             <div>
 
+
+
                 <ReactSVGPanZoom
                     style={{outline: "1px solid black"}}
                     width={500}
                     height={500}
                 >
-                    <svg width={800} height={500}>
+                    <svg width={1500} height={1000}>
                         <MyComponent/>
                     </svg>
                 </ReactSVGPanZoom>
