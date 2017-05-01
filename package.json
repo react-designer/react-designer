@@ -53,6 +53,7 @@
     "react-file-reader-input": "^1.1.0",
     "react-hotkeys": "^0.9.0",
     "react-portal": "^3.0.0",
-    "react-svg-pan-zoom": "^2.6.1"
+    "react-svg-pan-zoom": "^2.6.1",
+    "svg-jsx-loader": "0.0.16"
   }
 }
