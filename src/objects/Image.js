@@ -11,7 +11,8 @@ export default class Image extends Vector {
     initial: {
       width: 100,
       height: 100,
-      xlinkHref: "https://placeholdit.imgix.net/~text?txtsize=10&txt=100x100&w=100&h=100"
+      // Just a simple base64-encoded outline
+      xlinkHref: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAhSURBVHgBtYmxDQAADII8lv9faBNH4yoJLAi4ppxgMZoPoxQrXYyeEfoAAAAASUVORK5CYII="
     }
   };
 
