@@ -55,10 +55,10 @@ export default class extends Component {
         "textDecoration": "none",
         "fill": "rgba(11, 10, 10, 1)",
         "fontSize": "20",
-        "fontFamily": "AmericanTypewriter, Georgia, serif",
+        "fontFamily": "Inconsolata",
         "type": "text",
-        "x": 175,
-        "y": 153
+        "x": 105,
+        "y": 152
       }, {
         "text": "FRONT",
         "rotate": 0,
@@ -67,10 +67,10 @@ export default class extends Component {
         "textDecoration": "none",
         "fill": "rgba(0, 0, 0, 1)",
         "fontSize": "47",
-        "fontFamily": "AmericanTypewriter, Georgia, serif",
+        "fontFamily": "Alegreya",
         "type": "text",
-        "x": 176,
-        "y": 183
+        "x": 106,
+        "y": 184
       }, {
         "text": "END",
         "rotate": 0,
@@ -79,10 +79,10 @@ export default class extends Component {
         "textDecoration": "none",
         "fill": "rgba(0, 0, 0, 1)",
         "fontSize": "25",
-        "fontFamily": "AmericanTypewriter, Georgia, serif",
+        "fontFamily": "Inconsolata",
         "type": "text",
-        "x": 171,
-        "y": 216
+        "x": 211,
+        "y": 219
       }
     ]
   };
