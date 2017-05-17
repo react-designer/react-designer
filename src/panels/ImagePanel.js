@@ -15,27 +15,15 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
 export default class ImagePanel extends Panel {
-  state = {
-    files: []
-  }
-
   onDrop (files) {
-    $("#loader-wrapper").removeClass("hide")
-    let {id} = this.props
-    var req = request.post(`/menus/${id}/uploads`);
-    req.query({ format: 'json' })
-    req.field('authenticity_token', $('meta[name="csrf-token"]').attr('content') )
-    files.forEach((file)=> {
-        req.attach("upload[mediable]", file);
-    });
-    req.end((err, res)=>{
-      this.props.onChange("xlinkHref", res.body.mediable);
-      $("#loader-wrapper").addClass("hide")
-    });
+    var file = files[0];
+    var fr = new FileReader();
 
-    this.setState({
-      files: files
-    });
+    var setImage = function(e) {
+      this.props.onChange('xlinkHref', e.target.result);
+    }.bind(this);
+    fr.onload = setImage;
+    fr.readAsDataURL(files[0]);
   }
 
   render() {
