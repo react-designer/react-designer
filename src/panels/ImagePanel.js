@@ -15,30 +15,51 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
 export default class ImagePanel extends Panel {
-  onDrop (files) {
-    var file = files[0];
-    var fr = new FileReader();
+  onDrop (acceptedFiles) {
+    if (acceptedFiles.length == 0) {
+      return;
+    }
 
-    var setImage = function(e) {
+    const file = acceptedFiles[0];
+    const fr = new FileReader();
+
+    const setImage = function(e) {
       this.props.onChange('xlinkHref', e.target.result);
     }.bind(this);
     fr.onload = setImage;
-    fr.readAsDataURL(files[0]);
+    fr.readAsDataURL(file);
   }
 
   render() {
-    let {object} = this.props;
+    const {object} = this.props;
     return (
-      <PropertyGroup object={object}  showIf={_.has(object, 'xlinkHref')}>
-          <div style={styles.columns}>
+      <PropertyGroup object={object} showIf={_.has(object, 'xlinkHref')}>
+          <Columns label="Image">
             <Column>
-              <div className="dropzone--wrapper">
-                <Dropzone onDrop={this.onDrop.bind(this)} multiple={false}>
-                  <div>Try dropping some files here, or click to select files to upload.</div>
-                </Dropzone>
-              </div>
+              <Dropzone
+                  accept="image/*"
+                  onDrop={this.onDrop.bind(this)}
+                  multiple={false}
+                  style={{
+                    float:'left',
+                    marginRight: '3px',
+                    padding: '3px',
+                    border: '1px solid gray',
+                    color: 'gray',
+                    borderRadius: '3px',
+                    width: '100px',
+                    textAlign: 'center',
+                  }}
+                  activeStyle={{
+                    border: '1px solid blue',
+                    backgroundColor: 'white',
+                    color: 'black',
+                  }}
+              >
+                <div>drop new file</div>
+              </Dropzone>
             </Column>
-          </div>
+          </Columns>
       </PropertyGroup>
     );
   }
