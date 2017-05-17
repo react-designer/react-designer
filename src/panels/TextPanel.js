@@ -17,7 +17,6 @@ import Autocomplete from 'react-autocomplete';
 export default class TextPanel extends Panel {
   constructor(props){
     super()
-    // console.log(props)
     this.state = { value: props.object.fontFamily }
   }
 
@@ -105,9 +104,6 @@ export default class TextPanel extends Panel {
       }
     });
     this.props.onChange('fontFamily', value)
-    // console.log(this, e.target.options[e.target.selectedIndex].text)
-    // this.props.onChange('fontFamily', e.target.value)
-    // (e) => this.props.onChange('fontFamily', e.target.value)
   }
 
   matchStateToTerm (state, value) {

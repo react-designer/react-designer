@@ -52,7 +52,6 @@ class Designer extends Component {
 
   componentWillMount() {
     this.objectRefs = {};
-    // console.log("will mount", this.props)
   }
 
   showHandler(index) {
@@ -127,11 +126,7 @@ class Designer extends Component {
   newObject(event) {
     let {mode, selectedTool} = this.state;
 
-    // console.log(mode, selectedTool, this.state)
-
     this.resetSelection(event);
-
-    // console.log(mode, selectedTool, this.state)
 
     if (mode !== modes.DRAW) {
       return;
@@ -175,9 +170,6 @@ class Designer extends Component {
       y: diffY + y
     }));
 
-    // console.log(object)
-    // console.log("ID => ", object.uuid, "CHANGES :", JSON.stringify(newPath));
-
     return {
       ...object,
       path: newPath,
@@ -188,9 +180,6 @@ class Designer extends Component {
 
   updateObject(objectIndex, changes, updatePath) {
     let {objects, onUpdate} = this.props;
-    // console.log("THIS PROPS => ",this.props)
-    // console.log(this.props, changes, updatePath, objectIndex)
-    // console.log(index, objectIndex)
     onUpdate(objects.map((object, index) => {
       if (index === objectIndex) {
         let newObject = {
@@ -370,7 +359,6 @@ class Designer extends Component {
 
   getObjectComponent(type) {
     let {objectTypes} = this.props;
-    // console.log("OBJECT COMPONENT => ",objectTypes[type], "TYPE => ", type)
     return objectTypes[type];
   }
 

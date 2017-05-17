@@ -24,7 +24,6 @@ export default class Vector extends Component {
   }
 
   getTransformMatrix({rotate, x, y, width, height}) {
-    console.log(rotate)
     if (rotate) {
       let centerX = width / 2 + x;
       let centerY = height / 2 + y;

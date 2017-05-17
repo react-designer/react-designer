@@ -16,7 +16,6 @@ import Column from './Column';
 class PanelList extends Component {
   render() {
     let {object, offset, objectComponent, id} = this.props;
-    // console.log(this.props)
     let style = {
       left: offset.width + offset.x,
       top: offset.y + window.scrollY,
