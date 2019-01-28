@@ -27,7 +27,7 @@ export default class App extends Component {
         </div>
         <div className={classes.usage}>
           <h4 className={classes.mainTitle}>Usage</h4>
-          <p>You should provide your objects and object types. The objects might be empty array if you want yo create a
+          <p>You should provide your objects and object types. The objects might be empty array if you want to create a
           blank canvas.</p>
           <pre className={classes.code}>{`
 import Designer, {Text, Rect} from 'react-designer';
