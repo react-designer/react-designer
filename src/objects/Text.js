@@ -4,19 +4,20 @@ import Icon from '../Icon';
 import _ from 'lodash';
 
 import Vector from './Vector';
+import WebFont from 'webfontloader';
 
 export default class Text extends Vector {
   static meta = {
     icon: <Icon icon={'text'} size={30} />,
     initial: {
-      text: "Hello",
+      text: "I am a text object...",
       rotate: 0,
       fontWeight: "normal",
-      fontStyle: "normal",
+      fontStyle: "italic",
       textDecoration: "none",
       fill: "black",
-      fontSize: 50,
-      fontFamily: "Helvetica"
+      fontSize: 20,
+      fontFamily: "Open Sans"
     }
   };
 
@@ -39,10 +40,15 @@ export default class Text extends Vector {
 
   render() {
     let {object, index} = this.props;
+    WebFont.load({
+      google: {
+        families: [object.fontFamily]
+      }
+    });
     return (
       <text style={this.getStyle()}
          {...this.getObjectAttributes()}
-         textAnchor="middle"
+         textAnchor="right"
          fontSize={object.fontSize}
          fontFamily={object.fontFamily}>
         {object.text}

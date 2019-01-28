@@ -10,7 +10,7 @@ import SVGRenderer from './SVGRenderer';
 import Handler from './Handler';
 import {modes} from './constants';
 import * as actions from './actions';
-import {Text, Path, Rect, Circle} from './objects';
+import {Text, Path, Rect, Circle, Image} from './objects';
 import PanelList from './panels/PanelList';
 
 class Designer extends Component {
@@ -19,7 +19,8 @@ class Designer extends Component {
       'text': Text,
       'rectangle': Rect,
       'circle': Circle,
-      'polygon': Path
+      'polygon': Path,
+      'image': Image
     },
     snapToGrid: 1,
     svgStyle: {},
@@ -52,7 +53,7 @@ class Designer extends Component {
   componentWillMount() {
     this.objectRefs = {};
   }
-  
+
   showHandler(index) {
     let {mode} = this.state;
     let {objects} = this.props;
@@ -109,6 +110,19 @@ class Designer extends Component {
     });
   }
 
+  generateUUID() {
+      var d = new Date().getTime();
+      if(window.performance && typeof window.performance.now === "function"){
+          d += performance.now(); //use high-precision timer if available
+      }
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = (d + Math.random()*16)%16 | 0;
+          d = Math.floor(d/16);
+          return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+      });
+      return uuid;
+  }
+
   newObject(event) {
     let {mode, selectedTool} = this.state;
 
@@ -120,15 +134,16 @@ class Designer extends Component {
 
     let {meta} = this.getObjectComponent(selectedTool);
     let mouse = this.getMouseCoords(event);
-    
+
     let {objects, onUpdate} = this.props;
     let object = {
       ...meta.initial,
       type: selectedTool,
       x: mouse.x,
-      y: mouse.y
+      y: mouse.y,
+      uuid: this.generateUUID()
     };
-   
+
     onUpdate([...objects, object]);
 
     this.setState({
@@ -138,14 +153,14 @@ class Designer extends Component {
       mode: meta.editor ? modes.EDIT_OBJECT : modes.SCALE,
       selectedTool: null
     });
-    
+
   }
 
   updatePath(object) {
     let {path} = object;
     let diffX = object.x - object.moveX;
     let diffY = object.y - object.moveY;
-    
+
     let newPath = path.map(({x1, y1, x2, y2, x, y}) => ({
       x1: diffX + x1,
       y1: diffY + y1,
@@ -165,17 +180,18 @@ class Designer extends Component {
 
   updateObject(objectIndex, changes, updatePath) {
     let {objects, onUpdate} = this.props;
-
     onUpdate(objects.map((object, index) => {
       if (index === objectIndex) {
         let newObject = {
           ...object,
           ...changes
         };
+
         return updatePath
-                ? this.updatePath(newObject) 
+                ? this.updatePath(newObject)
                 : newObject;
       } else {
+        // console.log("ID=> ", object.uuid, "CHANGES :", JSON.stringify(changes))
         return object;
       }
     }));
@@ -223,7 +239,7 @@ class Designer extends Component {
         top: bbox.top - offset.y
       };
     }
-    
+
     this.setState({
       handler: handler
     });
@@ -264,17 +280,17 @@ class Designer extends Component {
 
     if (action) {
       let newObject = action({
-        object, 
-        startPoint, 
-        mouse, 
-        objectIndex: currentObjectIndex, 
+        object,
+        startPoint,
+        mouse,
+        objectIndex: currentObjectIndex,
         objectRefs: this.objectRefs
       });
 
       this.updateObject(currentObjectIndex, newObject);
       this.updateHandler(currentObjectIndex, newObject);
     }
-    
+
     if (currentObjectIndex !== null) {
       this.detectOverlappedObjects(event);
     }
@@ -297,14 +313,14 @@ class Designer extends Component {
     ).forEach((key) => {
       let rect = refs[key].getBoundingClientRect();
       let {left, top, width, height} = rect;
-      
+
       left -= offset.x;
       top -= offset.y;
 
       let isOverlapped = (
         mouse.x > left && mouse.x < left + width &&
         mouse.y > top && mouse.y < top + height &&
-        currentRect.width > width && 
+        currentRect.width > width &&
         currentRect.height > height
       );
 
@@ -313,7 +329,7 @@ class Designer extends Component {
       }
     });
   }
-  
+
   stopDrag() {
     let {mode} = this.state;
 
@@ -325,10 +341,10 @@ class Designer extends Component {
       });
     }
   }
-  
+
   showEditor() {
     let {selectedObjectIndex} = this.state;
-    
+
     let {objects} = this.props,
       currentObject = objects[selectedObjectIndex],
       objectComponent = this.getObjectComponent(currentObject.type);
@@ -349,7 +365,7 @@ class Designer extends Component {
   getCanvas() {
     let {width, height} = this.props;
     let {
-      canvasWidth=width, 
+      canvasWidth=width,
       canvasHeight=height
     } = this.props;
     return {
@@ -365,7 +381,7 @@ class Designer extends Component {
     let {background, objects, svgStyle, objectTypes} = this.props;
 
     return (
-      <SVGRenderer 
+      <SVGRenderer
          background={background}
          width={width}
          canvas={canvas}
@@ -391,6 +407,7 @@ class Designer extends Component {
 
   handleObjectChange(key, value) {
     let {selectedObjectIndex} = this.state;
+    // console.log(this.state, key, value)
     this.updateObject(selectedObjectIndex, {
       [key]: value
     });
@@ -407,7 +424,7 @@ class Designer extends Component {
     };
 
     let rest = objects.filter(
-      (object, index) => 
+      (object, index) =>
         selectedObjectIndex !== index
     );
 
@@ -429,7 +446,7 @@ class Designer extends Component {
     let {objects} = this.props;
 
     let rest = objects.filter(
-      (object, index) => 
+      (object, index) =>
         selectedObjectIndex !== index
     );
 
@@ -448,7 +465,7 @@ class Designer extends Component {
     let {selectedObjectIndex} = this.state;
     let {objects} = this.props;
     let object = objects[selectedObjectIndex];
-    
+
     if (key.startsWith('shift')) {
       points *= 10;
     }
@@ -457,7 +474,7 @@ class Designer extends Component {
       ...object,
       [attr]: object[attr] + points
     };
-    
+
     this.updateObject(selectedObjectIndex, changes);
     this.updateHandler(selectedObjectIndex, changes);
   }
@@ -483,10 +500,10 @@ class Designer extends Component {
   render() {
     let {showHandler, handler, mode,
          selectedObjectIndex, selectedTool} = this.state;
-    
+
     let {
-      objects, 
-      objectTypes, 
+      objects,
+      objectTypes,
       insertMenu: InsertMenuComponent
     } = this.props;
 
@@ -495,7 +512,7 @@ class Designer extends Component {
         showPropertyPanel = selectedObjectIndex !== null;
 
     let {width, height, canvasWidth, canvasHeight} = this.getCanvas();
-    
+
     let objectComponent, objectWithInitial, ObjectEditor;
     if (currentObject) {
       objectComponent = this.getObjectComponent(currentObject.type);
@@ -505,26 +522,27 @@ class Designer extends Component {
       };
       ObjectEditor = objectComponent.meta.editor;
     }
-    
+
     return (
       <HotKeys
         keyMap={this.keyMap}
-        style={styles.keyboardManager} 
+        style={styles.keyboardManager}
         handlers={this.getKeymapHandlers()}>
         <div className={'container'}
              style={{
                 ...styles.container,
                 ...this.props.style,
                 width: canvasWidth,
-                height: canvasHeight
-             }} 
+                height: canvasHeight,
+                padding: 0
+             }}
              onMouseMove={this.onDrag.bind(this)}
              onMouseUp={this.stopDrag.bind(this)}>
 
           {isEditMode && ObjectEditor && (
              <ObjectEditor object={currentObject}
                  offset={this.getOffset()}
-                 onUpdate={(object) => 
+                 onUpdate={(object) =>
                     this.updateObject(selectedObjectIndex, object)}
                  onClose={() => this.setState({mode: modes.FREE})}
                  width={width}
@@ -541,7 +559,7 @@ class Designer extends Component {
               onDrag={this.startDrag.bind(this, modes.DRAG)}
               onResize={this.startDrag.bind(this, modes.SCALE)}
               onRotate={this.startDrag.bind(this, modes.ROTATE)} /> )}
-          
+
           {InsertMenuComponent && (
             <InsertMenuComponent tools={objectTypes}
               currentTool={selectedTool}
@@ -552,6 +570,7 @@ class Designer extends Component {
 
           {showPropertyPanel && (
             <PanelList
+              id={this.props.id}
               offset={this.getOffset()}
               object={objectWithInitial}
               onArrange={this.handleArrange.bind(this)}

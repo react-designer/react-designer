@@ -7,6 +7,10 @@ export default class Icon extends Component {
 
   renderGraphic() {
     switch (this.props.icon) {
+      case 'image':
+        return (
+          <g><path d="M21 19v-14c0-1.1-.9-2-2-2h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-12.5-5.5l2.5 3.01 3.5-4.51 4.5 6h-14l3.5-4.5z"></path></g>
+        );
       case 'my-icon':
         return (
           <g><path d="M7.41 7.84l4.59 4.58 4.59-4.58 1.41 1.41-6 6-6-6z"/></g>
@@ -17,8 +21,8 @@ export default class Icon extends Component {
         );
       case 'format-bold':
         return (
-          <g><path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4h-6.25v14h7.04c2.09 
-          0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zm-5.6-4.29h3c.83 0 1.5.67 1.5 1.5s-.67 
+          <g><path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4h-6.25v14h7.04c2.09
+          0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zm-5.6-4.29h3c.83 0 1.5.67 1.5 1.5s-.67
           1.5-1.5 1.5h-3v-3zm3.5 9h-3.5v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"></path></g>
         );
       case 'format-italic':
@@ -27,12 +31,12 @@ export default class Icon extends Component {
         );
       case 'format-underline':
         return (
-          <g><path d="M12 17c3.31 0 6-2.69 6-6v-8h-2.5v8c0 1.93-1.57 3.5-3.5 
+          <g><path d="M12 17c3.31 0 6-2.69 6-6v-8h-2.5v8c0 1.93-1.57 3.5-3.5
           3.5s-3.5-1.57-3.5-3.5v-8h-2.5v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2h-14z"></path></g>
         );
       case 'format-align-left':
         return (
-          <g><path d="M15 15h-12v2h12v-2zm0-8h-12v2h12v-2zm-12 
+          <g><path d="M15 15h-12v2h12v-2zm0-8h-12v2h12v-2zm-12
           6h18v-2h-18v2zm0 8h18v-2h-18v2zm0-18v2h18v-2h-18z"></path></g>
         );
       case 'format-align-center':
@@ -45,7 +49,7 @@ export default class Icon extends Component {
         );
       case 'add-box':
         return (
-          <g><path d="M19 3h-14c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-2 
+          <g><path d="M19 3h-14c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-2
           10h-4v4h-2v-4h-4v-2h4v-4h2v4h4v2z"></path></g>
         );
       case 'add':
@@ -54,7 +58,7 @@ export default class Icon extends Component {
         );
       case 'text-format':
         return (
-          <g><path d="M5 17v2h14v-2h-14zm4.5-4.2h5l.9 2.2h2.1l-4.75-11h-1.5l-4.75 
+          <g><path d="M5 17v2h14v-2h-14zm4.5-4.2h5l.9 2.2h2.1l-4.75-11h-1.5l-4.75
           11h2.1l.9-2.2zm2.5-6.82l1.87 5.02h-3.74l1.87-5.02z"></path></g>
         );
       case 'text':
@@ -82,7 +86,7 @@ export default class Icon extends Component {
       case 'rotate':
         return (
           <g><path d="M18.4 10.6c-1.85-1.61-4.25-2.6-6.9-2.6-4.65 0-8.58 3.03-9.96
-           7.22l2.36.78c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88l-3.62 
+           7.22l2.36.78c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88l-3.62
            3.62h9v-9l-3.6 3.6z"></path></g>
         );
       case 'send-to-back':
@@ -109,7 +113,7 @@ export default class Icon extends Component {
       height: this.props.size
     };
     return (
-      <svg viewBox="0 0 24 24" 
+      <svg viewBox="0 0 24 24"
         onClick={this.props.onClick}
         preserveAspectRatio="xMidYMid meet" fit
         style={{...styles, ...this.props.style}}>
