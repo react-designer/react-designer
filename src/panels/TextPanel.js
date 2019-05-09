@@ -10,23 +10,11 @@ import SwitchState from './SwitchState';
 import Columns from './Columns';
 import Column from './Column';
 import WebFont from 'webfontloader';
-import Autocomplete from 'react-autocomplete';
 
 export default class TextPanel extends Component {
   constructor(props){
     super()
     this.state = { value: props.object.fontFamily }
-  }
-
-  menuStyle = {
-      borderRadius: '3px',
-      boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
-      background: 'red',
-      padding: '2px 0',
-      fontSize: '90%',
-      position: 'fixed',
-      overflow: 'auto',
-      maxHeight: '50%', // TODO: don't cheat, let it flow to the bottom
   }
 
   fontFamilies = [
@@ -143,30 +131,19 @@ export default class TextPanel extends Component {
                   value={object.textDecoration}
                   onChange={this.props.onChange.bind(this, 'textDecoration')} />}
             </Column>
-            <Column style={{"float": "right"}} label="font size">
+            <Column style={{"float": "right"}}>
               {_.has(object, 'fontSize') &&
                 <input style={{...styles.input, ...styles.integerInput, width: 35}}
                        value={object.fontSize}
                        onChange={(e) => this.props.onChange('fontSize', e.target.value)} />}
             </Column>
-            <Column style={{"float": "right", marginRight: 10, padding: '3px 5px'}} label="choose font">
-              <Autocomplete
-                value={this.state.value}
-                style={this.menuStyle}
-                labelText=""
-                items={this.fontFamilies}
-                getItemValue={(item) => item.name}
-                shouldItemRender={this.matchStateToTerm}
-                sortItems={this.sortStates}
-                onChange={(event, value) => this.setState({ value })}
-                onSelect={this.handleFontFamilyChange.bind(this)}
-                renderItem={(item, isHighlighted) => (
-                  <div
-                    style={isHighlighted ? styles.highlightedItem : styles.item}
-                    key={item.family}
-                  >{item.name}</div>
-                )}
-              />
+            <Column style={{"float": "right", marginRight: 10}}>
+              <select style={styles.select}
+                      value={object.fontFamily}
+                      onChange={(e) => this.props.onChange('fontFamily', e.target.value)}  >
+                {this.fontFamilies.sort((f1, f2) => f1.name > f2.name ? 1 : -1).map(({name, value}) =>
+                    <option key={value} value={value}>{name}</option>)}
+              </select>
             </Column>
             <div style={{...styles.row, paddingTop: 25, paddingRight: 10}}>
               <input style={{...styles.input, ...styles.textInput}}
