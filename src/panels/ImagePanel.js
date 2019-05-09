@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 
 import Icon from '../Icon';
-import Panel from './Panel';
 
 import styles from './styles';
 import PropertyGroup from './PropertyGroup';
@@ -13,7 +12,7 @@ import Column from './Column';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
-export default class ImagePanel extends Panel {
+export default class ImagePanel extends Component {
   onDrop (acceptedFiles) {
     if (acceptedFiles.length == 0) {
       return;

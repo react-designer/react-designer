@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 
 import Icon from '../Icon';
-import Panel from './Panel';
 
 import styles from './styles';
 import PropertyGroup from './PropertyGroup';
@@ -12,7 +11,7 @@ import Columns from './Columns';
 import Column from './Column';
 import ColorInput from './ColorInput';
 
-export default class StylePanel extends Panel {
+export default class StylePanel extends Component {
   modes = [
     'normal',
     'multiply',

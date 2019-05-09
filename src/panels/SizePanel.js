@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 
 import Icon from '../Icon';
-import Panel from './Panel';
 
 import styles from './styles';
 import PropertyGroup from './PropertyGroup';
@@ -11,7 +10,7 @@ import SwitchState from './SwitchState';
 import Columns from './Columns';
 import Column from './Column';
 
-export default class SizePanel extends Panel {
+export default class SizePanel extends Component {
   render() {
     let {object} = this.props;
     return (

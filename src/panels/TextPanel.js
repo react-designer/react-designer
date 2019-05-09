@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 
 import Icon from '../Icon';
-import Panel from './Panel';
 
 import styles from './styles';
 import PropertyGroup from './PropertyGroup';
@@ -13,7 +12,7 @@ import Column from './Column';
 import WebFont from 'webfontloader';
 import Autocomplete from 'react-autocomplete';
 
-export default class TextPanel extends Panel {
+export default class TextPanel extends Component {
   constructor(props){
     super()
     this.state = { value: props.object.fontFamily }
