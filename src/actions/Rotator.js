@@ -1,6 +1,6 @@
 export default ({object, startPoint, mouse}) => {
   let angle = Math.atan2(
-    startPoint.objectX + (object.width || 0) / 2 - mouse.x, 
+    startPoint.objectX + (object.width || 0) / 2 - mouse.x,
     startPoint.objectY + (object.height || 0) / 2 - mouse.y
   );
 

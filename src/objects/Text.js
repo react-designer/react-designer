@@ -10,10 +10,10 @@ export default class Text extends Vector {
   static meta = {
     icon: <Icon icon={'text'} size={30} />,
     initial: {
-      text: "I am a text object...",
+      text: "Type some text...",
       rotate: 0,
       fontWeight: "normal",
-      fontStyle: "italic",
+      fontStyle: "normal",
       textDecoration: "none",
       fill: "black",
       fontSize: 20,
@@ -45,9 +45,10 @@ export default class Text extends Vector {
         families: [object.fontFamily]
       }
     });
+    const {rotate, ... restOfAttributes} = this.getObjectAttributes()
     return (
       <text style={this.getStyle()}
-         {...this.getObjectAttributes()}
+         {...restOfAttributes}
          textAnchor="right"
          fontSize={object.fontSize}
          fontFamily={object.fontFamily}>

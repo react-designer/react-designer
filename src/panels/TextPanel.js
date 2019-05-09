@@ -12,78 +12,46 @@ import Column from './Column';
 import WebFont from 'webfontloader';
 
 export default class TextPanel extends Component {
-  constructor(props){
-    super()
-    this.state = { value: props.object.fontFamily }
-  }
-
   fontFamilies = [
-    // {name: 'PT Serif', family: 'PT Serif, Arial, serif'},
-    // {name: 'Arvo', family: '"Arvo", Arial, serif'},
-    // {name: 'Bitter', family: 'Bitter, serif'},
-    // {name: 'Cardo', family: 'Cardo, serif'},
-    // {name: 'Domine', family: 'Domine, Arial, serif'},
-    // {name: 'Old Standard TT', family: '"Old Standard TT", Arial, serif'},
-    // {name: 'Varela Round', family:'Varela Round, serif'},
-    // {name: 'Chivo', family: 'Chivo, sans-serif'},
-    // {name: 'Roboto', family: 'Roboto, sans-serif'},
-    // {name: 'Roboto Slab', family: 'Roboto Slab, serif'},
-    // {name: 'Crimson Text', family: 'Crimson Text, serif'},
-    // {name: 'Libre Bakersville', family: 'Libre Bakersville, serif'},
-    // {name: 'Montserrat', family:'Montserrat, sans-serif'},
-    // {name: 'Archivo Narrow', family: 'Archivo Narrow, sans-serif'},
-    // {name: 'Lato', family: 'Lato, sans-serif'},
-    // {name: 'Anonymous Pro', family: 'Anonymous Pro, monospace'},
-    // {name: 'Merriweather', family: 'Merriweather, serif'},
-    // {name: 'Neuton', family:'Neuton, serif'},
-    // {name: 'Open Sans', family: 'Open Sans, sans-serif'},
-    // {name: 'Poppins', family: 'Poppins, sans-serif'},
-    // {name: 'Lora', family: 'Lora, serif'},
-    // {name: 'Source Serif Pro', family: 'Source Serif Pro, serif'},
-    // {name: 'Karla', family: 'Karla, sans-serif'},
-    // {name: 'Montserrat', family:'Montserrat, serif'},
-    // {name: 'Source Sans Pro', family: 'Source Sans Pro, sans-serif'},
-    // {name: 'Inconsolata', family: 'Inconsolata, monospace'},
-    // {name: 'Playfair Display', family: 'Playfair Display, serif'},
-    // {name: 'Work Sans', family: 'Work Sans, serif'},
-    // {name: 'Alegreya', family: 'Alegreya, serif'},
-    // {name: 'Alegreya Sans', family: 'Alegreya Sans, sans-serif'},
-    // {name: 'Fira Sans', family: 'Fira Sans, sans-serif'},
-    {name: 'PT Serif', family: 'PT Serif'},
+    {name: 'Alegreya Sans', family: 'Alegreya Sans'},
+    {name: 'Alegreya', family: 'Alegreya'},
+    {name: 'American Typewriter', family:'AmericanTypewriter, Georgia, serif'},
+    {name: 'Anonymous Pro', family: 'Anonymous Pro'},
+    {name: 'Archivo Narrow', family: 'Archivo Narrow'},
     {name: 'Arvo', family: 'Arvo'},
     {name: 'Bitter', family: 'Bitter'},
     {name: 'Cardo', family: 'Cardo'},
-    {name: 'Domine', family: 'Domine'},
-    {name: 'Old Standard TT', family: 'Old Standard TT'},
-    {name: 'Varela Round', family:'Varela Round'},
     {name: 'Chivo', family: 'Chivo'},
-    {name: 'Roboto', family: 'Roboto'},
-    {name: 'Roboto Slab', family: 'Roboto Slab'},
     {name: 'Crimson Text', family: 'Crimson Text'},
-    {name: 'Libre Baskerville', family: 'Libre Baskerville'},
-    {name: 'Montserrat', family:'Montserrat'},
-    {name: 'Archivo Narrow', family: 'Archivo Narrow'},
-    {name: 'Lato', family: 'Lato'},
-    {name: 'Anonymous Pro', family: 'Anonymous Pro'},
-    {name: 'Merriweather', family: 'Merriweather'},
-    {name: 'Neuton', family:'Neuton'},
-    {name: 'Open Sans', family: 'Open Sans'},
-    {name: 'Poppins', family: 'Poppins'},
-    {name: 'Lora', family: 'Lora'},
-    {name: 'Source Pro', family: 'Source Pro'},
-    {name: 'Karla', family: 'Karla'},
-    {name: 'Source Sans Pro', family: 'Source Sans Pro'},
-    {name: 'Inconsolata', family: 'Inconsolata'},
-    {name: 'Playfair Display', family: 'Playfair Display'},
-    {name: 'Work Sans', family: 'Work Sans'},
-    {name: 'Alegreya', family: 'Alegreya'},
-    {name: 'Alegreya Sans', family: 'Alegreya Sans'},
+    {name: 'Domine', family: 'Domine'},
     {name: 'Fira Sans', family: 'Fira Sans'},
+    {name: 'Georgia', family:'Georgia, serif'},
+    {name: 'Helvetica Neue', family:'"Helvetica Neue", Arial, sans-serif'},
+    {name: 'Helvetica', family:'Helvetica, Arial, sans-serif'},
+    {name: 'Inconsolata', family: 'Inconsolata'},
+    {name: 'Karla', family: 'Karla'},
+    {name: 'Lato', family: 'Lato'},
+    {name: 'Libre Baskerville', family: 'Libre Baskerville'},
+    {name: 'Lora', family: 'Lora'},
+    {name: 'Merriweather', family: 'Merriweather'},
+    {name: 'Monaco', family:'Monaco, consolas, monospace'},
+    {name: 'Montserrat', family:'Montserrat'},
+    {name: 'Neuton', family:'Neuton'},
+    {name: 'Old Standard TT', family: 'Old Standard TT'},
+    {name: 'Open Sans', family: 'Open Sans'},
+    {name: 'PT Serif', family: 'PT Serif'},
+    {name: 'Playfair Display', family: 'Playfair Display'},
+    {name: 'Poppins', family: 'Poppins'},
+    {name: 'Roboto Slab', family: 'Roboto Slab'},
+    {name: 'Roboto', family: 'Roboto'},
+    {name: 'Source Pro', family: 'Source Pro'},
+    {name: 'Source Sans Pro', family: 'Source Sans Pro'},
+    {name: 'Varela Round', family:'Varela Round'},
+    {name: 'Work Sans', family: 'Work Sans'},
   ];
 
-  handleFontFamilyChange(value){
-    // console.log(e, this, this.props)
-    this.setState({ value })
+  handleFontFamilyChange = e => {
+    const value = e.target.value
     WebFont.load({
       google: {
         families: [value]
@@ -92,19 +60,7 @@ export default class TextPanel extends Component {
     this.props.onChange('fontFamily', value)
   }
 
-  matchStateToTerm (state, value) {
-    return (
-      state.name.toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
-      state.family.toLowerCase().indexOf(value.toLowerCase()) !== -1
-    )
-  }
-
-  sortStates (a, b, value) {
-    return (
-      a.name.toLowerCase().indexOf(value.toLowerCase()) >
-      b.name.toLowerCase().indexOf(value.toLowerCase()) ? 1 : -1
-    )
-  }
+  sortFonts = (f1, f2) => f1.name.toLowerCase() > f2.name.toLowerCase() ? 1 : f1.name.toLowerCase() < f2.name.toLowerCase() ? -1 : 0
 
   render() {
     let {object} = this.props;
@@ -140,9 +96,10 @@ export default class TextPanel extends Component {
             <Column style={{"float": "right", marginRight: 10}}>
               <select style={styles.select}
                       value={object.fontFamily}
-                      onChange={(e) => this.props.onChange('fontFamily', e.target.value)}  >
-                {this.fontFamilies.sort((f1, f2) => f1.name > f2.name ? 1 : -1).map(({name, value}) =>
-                    <option key={value} value={value}>{name}</option>)}
+                      onChange={this.handleFontFamilyChange}>
+                {this.fontFamilies.sort(this.sortFonts).map(({name, family}) => (
+                  <option key={family} value={family}>{name}</option>
+                ))}
               </select>
             </Column>
             <div style={{...styles.row, paddingTop: 25, paddingRight: 10}}>
