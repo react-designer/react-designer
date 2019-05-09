@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
 import _ from 'lodash';
-import Portal from 'react-portal';
+import { Portal } from 'react-portal';
 
 import Icon from '../Icon';
-import Panel from './Panel';
 
 import styles from './styles';
 import PropertyGroup from './PropertyGroup';
@@ -24,7 +22,7 @@ class PanelList extends Component {
 
     return (
       <Portal className="propertyPanel" closeOnEsc closeOnOutsideClick isOpened={true}>
-        <div style={[styles.propertyPanel, style]}>
+        <div style={{...styles.propertyPanel, ...style}}>
           {objectComponent.panels.map((Panel, i) => <Panel key={i} id={id} {...this.props} />)}
         </div>
       </Portal>
@@ -32,4 +30,4 @@ class PanelList extends Component {
   }
 };
 
-export default Radium(PanelList);
+export default PanelList;

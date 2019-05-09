@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
 import _ from 'lodash';
 import Icon from '../Icon';
 
@@ -17,4 +16,4 @@ const Button = ({onClick, ...props}) => {
   );
 }
 
-export default Radium(Button);
+export default Button;

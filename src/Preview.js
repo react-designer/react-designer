@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
 import SVGRenderer from './SVGRenderer';
 
 import {Text, Path, Rect, Circle, Image} from './objects';
@@ -58,4 +57,4 @@ const styles = {
   }
 };
 
-export default Radium(Preview);
+export default Preview;

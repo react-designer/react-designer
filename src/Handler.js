@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import ReactDOM from 'react-dom';
-import Radium from 'radium';
 import Icon from './Icon';
 
 function ScaleAnchor(props) {
@@ -9,31 +8,35 @@ function ScaleAnchor(props) {
     marginTop: boundingBox.height + 5,
     marginLeft: boundingBox.width + 5
   };
+  let [anchorHovered, setAnchorHovered] = useState(false);
   return (
-    <div style={[styles.anchor,
-                 styles.scaleAnchor,
-                 style]}
+    <div style={{...styles.anchor,
+                 ...anchorHovered ? styles.anchorHovered : {},
+                 ...styles.scaleAnchor,
+                 ...style}}
          className={'resize-anchor'}
+         onMouseOver={() => setAnchorHovered(true)}
+         onMouseOut={() => setAnchorHovered(false)}
          onMouseDown={props.onMouseDown} />
   );
 };
-
-ScaleAnchor = Radium(ScaleAnchor);
 
 function RotateAnchor(props) {
   let style = {
     marginLeft: props.boundingBox.width + 5
   };
+  let [anchorHovered, setAnchorHovered] = useState(false);
   return (
-    <div style={[styles.anchor,
-                 styles.rotateAnchor,
-                 style]}
+    <div style={{...styles.anchor,
+                 ...anchorHovered ? styles.anchorHovered : {},
+                 ...styles.rotateAnchor,
+                 ...style}}
          className={'rotate-anchor'}
+         onMouseOver={() => setAnchorHovered(true)}
+         onMouseOut={() => setAnchorHovered(false)}
          onMouseDown={props.onMouseDown} />
   )
 };
-
-RotateAnchor = Radium(RotateAnchor);
 
 class Handler extends Component {
   onMouseDown(event) {
@@ -83,10 +86,10 @@ const styles = {
   },
   anchor: {
     'width': 10,
-    'height': 10,
-    ':hover': {
-      'borderColor': 'gray'
-    }
+    'height': 10
+  },
+  anchorHovered: {
+    'borderColor': 'gray'
   },
   scaleAnchor: {
     'marginTop': -3,

@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
 import _ from 'lodash';
 
 import Icon from '../Icon';
-import Panel from './Panel';
 
 import styles from './styles';
 import PropertyGroup from './PropertyGroup';
@@ -13,7 +11,7 @@ import Columns from './Columns';
 import Column from './Column';
 import ColorInput from './ColorInput';
 
-export default class StylePanel extends Panel {
+export default class StylePanel extends Component {
   modes = [
     'normal',
     'multiply',
@@ -49,12 +47,12 @@ export default class StylePanel extends Panel {
                           onChange={this.props.onChange.bind(this, 'stroke')} />
             </Column>
             <Column label="width">
-              <input style={[[styles.input, styles.integerInput], {width: 30}]}
+              <input style={{...styles.input, ...styles.integerInput, width: 30}}
                      onChange={(e) => this.props.onChange('strokeWidth', e.target.value)}
                      value={object.strokeWidth} />
             </Column>
             <Column showIf={_.has(object, 'radius')} label="radius">
-              <input style={[styles.input, styles.integerInput, {width: 30}]}
+              <input style={{...styles.input, ...styles.integerInput, width: 30}}
                      onChange={(e) => this.props.onChange('radius', e.target.value)}
                      value={object.radius} />
             </Column>

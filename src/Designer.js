@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import {HotKeys} from 'react-hotkeys';
-import Radium from 'radium';
 import Icon from './Icon';
 
 import InsertMenu from './panels/InsertMenu';
@@ -333,7 +332,7 @@ class Designer extends Component {
   stopDrag() {
     let {mode} = this.state;
 
-    if (_.contains([modes.DRAG,
+    if (_.includes([modes.DRAG,
                     modes.ROTATE,
                     modes.SCALE], mode)) {
       this.setState({
@@ -592,4 +591,4 @@ export const styles = {
   }
 }
 
-export default Radium(Designer);
+export default Designer;
