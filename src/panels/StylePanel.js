@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
 import _ from 'lodash';
 
 import Icon from '../Icon';
@@ -49,12 +48,12 @@ export default class StylePanel extends Panel {
                           onChange={this.props.onChange.bind(this, 'stroke')} />
             </Column>
             <Column label="width">
-              <input style={[[styles.input, styles.integerInput], {width: 30}]}
+              <input style={{...styles.input, ...styles.integerInput, width: 30}}
                      onChange={(e) => this.props.onChange('strokeWidth', e.target.value)}
                      value={object.strokeWidth} />
             </Column>
             <Column showIf={_.has(object, 'radius')} label="radius">
-              <input style={[styles.input, styles.integerInput, {width: 30}]}
+              <input style={{...styles.input, ...styles.integerInput, width: 30}}
                      onChange={(e) => this.props.onChange('radius', e.target.value)}
                      value={object.radius} />
             </Column>

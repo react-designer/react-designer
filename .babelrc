@@ -1,6 +1,8 @@
 {
-  "presets": ["es2015", "stage-0", "react"],
+  "presets": ["@babel/preset-env", "@babel/react"],
   "plugins": [
-  		["css-modules-transform", { "generateScopedName": "[name]__[local]___[hash:base64:5]" }]
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-proposal-class-properties",
+    "css-modules-transform"
   ]
 }

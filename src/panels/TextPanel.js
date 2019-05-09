@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
 import _ from 'lodash';
 
 import Icon from '../Icon';
@@ -147,7 +146,7 @@ export default class TextPanel extends Panel {
             </Column>
             <Column style={{"float": "right"}} label="font size">
               {_.has(object, 'fontSize') &&
-                <input style={[styles.input, styles.integerInput, {width: 35}]}
+                <input style={{...styles.input, ...styles.integerInput, width: 35}}
                        value={object.fontSize}
                        onChange={(e) => this.props.onChange('fontSize', e.target.value)} />}
             </Column>
@@ -170,8 +169,8 @@ export default class TextPanel extends Panel {
                 )}
               />
             </Column>
-            <div style={[styles.row, {paddingTop: 25, paddingRight: 10}]}>
-              <input style={[styles.input, styles.textInput]}
+            <div style={{...styles.row, paddingTop: 25, paddingRight: 10}}>
+              <input style={{...styles.input, ...styles.textInput}}
                      onChange={(e) => this.props.onChange('text', e.target.value)}
                      value={object.text} />
             </div>

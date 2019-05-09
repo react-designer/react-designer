@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
 
 
 class BezierEditor extends Component {
@@ -20,7 +19,7 @@ class BezierEditor extends Component {
     if (!object.path.length) {
       this.props.onUpdate({
         path: [
-          {x1: object.x, y1: object.y}  
+          {x1: object.x, y1: object.y}
         ],
         moveX: object.x,
         moveY: object.y
@@ -40,7 +39,7 @@ class BezierEditor extends Component {
   updatePath(updates, index) {
     let {path} = this.props.object;
     let current = path[index];
-    
+
     this.props.onUpdate({
       path: [
         ...path.slice(0, index),
@@ -56,7 +55,7 @@ class BezierEditor extends Component {
   updateCurrentPath(updates, close=false) {
     let {path} = this.props.object;
     let current = this.getCurrentPath();
-    
+
     this.props.onUpdate({
       closed: close,
       path: [
@@ -85,7 +84,7 @@ class BezierEditor extends Component {
       x = moveX;
       y = moveY;
     }
-    
+
     if (mode === 'source') {
       this.updateCurrentPath({
         x1: mouse.x,
@@ -113,8 +112,8 @@ class BezierEditor extends Component {
     }
 
     if (mode === 'move') {
-      let {movedPathIndex, 
-           movedTargetX, 
+      let {movedPathIndex,
+           movedTargetX,
            movedTargetY} = this.state;
       this.updatePath({
         [movedTargetX]: x,
@@ -224,7 +223,7 @@ class BezierEditor extends Component {
 
   moveVertex(pathIndex, targetX, targetY, event) {
     event.preventDefault();
-    
+
     if (this.state.mode !== 'edit') {
       return;
     }
@@ -249,25 +248,25 @@ class BezierEditor extends Component {
     let {object, width, height} = this.props;
     let {path} = object;
     let {state} = this;
-    
+
     let {moveX, moveY, x, y} = object;
-    
+
     let offsetX = x - moveX,
         offsetY = y - moveY;
 
     return (
-      <div style={styles.canvas} 
+      <div style={styles.canvas}
            onMouseUp={this.onMouseUp.bind(this)}
            onMouseMove={this.onMouseMove.bind(this)}
            onMouseDown={this.onMouseDown.bind(this)}>
         <svg style={{width, height}}>
-          <g transform={`translate(${offsetX} ${offsetY}) 
+          <g transform={`translate(${offsetX} ${offsetY})
                          rotate(${object.rotate} ${object.x} ${object.y})`}>
             {object.path.map(({x1, y1, x2, y2, x, y}, i) => (
               <g key={i}>
                 {x2 && y2 && (
                   <g>
-                    <line x1={x2} y1={y2} 
+                    <line x1={x2} y1={y2}
                       x2={x} y2={y}
                       style={styles.edge}
                       onMouseDown={this.moveVertex.bind(this, i, 'x', 'y')}  />
@@ -292,7 +291,7 @@ class BezierEditor extends Component {
                       onMouseDown={this.moveVertex.bind(this, i, 'x1', 'y1')} />
 
                     <circle r={4} cx={moveX} cy={moveY}
-                      style={[styles.vertex, styles.initialVertex]} />
+                      style={{...styles.vertex, ...styles.initialVertex}} />
                   </g>
                 )}
               </g>
@@ -320,4 +319,4 @@ const styles = {
   }
 };
 
-export default Radium(BezierEditor);
+export default BezierEditor;

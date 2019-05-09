@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
 
 class SVGRenderer extends Component {
   static defaultProps = {
@@ -26,17 +25,17 @@ class SVGRenderer extends Component {
          onMouseDown, onRender} = this.props;
     let {width, height, canvasOffsetX, canvasOffsetY} = canvas;
 
-    let style = [
-      styles.canvas,
-      background ? {
+    let style = {
+      ...styles.canvas,
+      ...background ? {
         backgroundColor: background
       }: styles.grid,
-      {
+      ...{
         ...svgStyle,
         marginTop: canvasOffsetY,
         marginLeft: canvasOffsetX
       }
-    ];
+    };
 
     return (
       <svg onMouseDown={onMouseDown}
@@ -66,4 +65,4 @@ export const styles = {
   }
 };
 
-export default Radium(SVGRenderer);
+export default SVGRenderer;

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Radium from 'radium';
 import _ from 'lodash';
 
 import Icon from '../Icon';
@@ -56,7 +55,12 @@ export default class ImagePanel extends Panel {
                     color: 'black',
                   }}
               >
-                <div>drop new file</div>
+                {({getRootProps, getInputProps}) => (
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      <p>Drop new file</p>
+                    </div>
+                )}
               </Dropzone>
             </Column>
           </Columns>
