@@ -71,9 +71,6 @@ class InsertMenu extends Component {
 
 const styles = {
   insertMenu: {
-    position: 'absolute',
-    marginTop: 0,
-    marginLeft: -40,
     height: 40,
     width: 40,
     overflow: 'hidden',

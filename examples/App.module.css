@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lora:400,400italic,700);
 
 .example {
+	display: flex;
+	flex-direction: column;
 	margin-bottom: 80px;
-	border-bottom: 1px solid black;
-	overflow: hidden;
 }
 
 .example h3 {
@@ -36,8 +36,6 @@
 
 .preview {
 	float: left;
-	margin-left: 50px;
-	margin-top: 20px;
 	margin-bottom: 110px;
 }
 
