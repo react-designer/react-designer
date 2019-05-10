@@ -1,9 +1,7 @@
 export default {
   propertyPanel: {
-    position: "absolute",
+    position: 'relative',
     width: 200,
-    top: 0,
-    left: 0,
     padding: '0 5px 6px 5px',
     fontFamily: '"Lucida Grande", sans-serif',
     fontSize: 11
@@ -85,6 +83,18 @@ export default {
     height: 14,
     display: 'inline-block',
     borderRadius: '50%'
+  },
+  colorCover: {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+  colorPopover: {
+    position: 'absolute',
+    marginTop: 8,
+    zIndex: 999999
   },
   empty: {
     display: 'none',

@@ -531,46 +531,48 @@ class Designer extends Component {
              style={{
                 ...styles.container,
                 ...this.props.style,
-                width: canvasWidth,
-                height: canvasHeight,
                 padding: 0
              }}
              onMouseMove={this.onDrag.bind(this)}
              onMouseUp={this.stopDrag.bind(this)}>
 
-          {isEditMode && ObjectEditor && (
-             <ObjectEditor object={currentObject}
-                 offset={this.getOffset()}
-                 onUpdate={(object) =>
-                    this.updateObject(selectedObjectIndex, object)}
-                 onClose={() => this.setState({mode: modes.FREE})}
-                 width={width}
-                 height={height} />)}
-
-          {showHandler && (
-            <Handler
-              boundingBox={handler}
-              canResize={_(currentObject).has('width') ||
-                         _(currentObject).has('height')}
-              canRotate={_(currentObject).has('rotate')}
-              onMouseLeave={this.hideHandler.bind(this)}
-              onDoubleClick={this.showEditor.bind(this)}
-              onDrag={this.startDrag.bind(this, modes.DRAG)}
-              onResize={this.startDrag.bind(this, modes.SCALE)}
-              onRotate={this.startDrag.bind(this, modes.ROTATE)} /> )}
-
+          {/* Left Panel: Displays insertion tools (shapes, images, etc.) */}
           {InsertMenuComponent && (
             <InsertMenuComponent tools={objectTypes}
               currentTool={selectedTool}
               onSelect={this.selectTool.bind(this)} />
           )}
 
-          {this.renderSVG()}
+          {/* Center Panel: Displays the preview */}
+          <div style={styles.canvasContainer}>
+            {isEditMode && ObjectEditor && (
+               <ObjectEditor object={currentObject}
+                   offset={this.getOffset()}
+                   onUpdate={(object) =>
+                      this.updateObject(selectedObjectIndex, object)}
+                   onClose={() => this.setState({mode: modes.FREE})}
+                   width={width}
+                   height={height} />)}
 
+            {showHandler && (
+              <Handler
+                boundingBox={handler}
+                canResize={_(currentObject).has('width') ||
+                           _(currentObject).has('height')}
+                canRotate={_(currentObject).has('rotate')}
+                onMouseLeave={this.hideHandler.bind(this)}
+                onDoubleClick={this.showEditor.bind(this)}
+                onDrag={this.startDrag.bind(this, modes.DRAG)}
+                onResize={this.startDrag.bind(this, modes.SCALE)}
+                onRotate={this.startDrag.bind(this, modes.ROTATE)} /> )}
+
+            {this.renderSVG()}
+          </div>
+
+          {/* Right Panel: Displays text, styling and sizing tools */}
           {showPropertyPanel && (
             <PanelList
               id={this.props.id}
-              offset={this.getOffset()}
               object={objectWithInitial}
               onArrange={this.handleArrange.bind(this)}
               onChange={this.handleObjectChange.bind(this)}
@@ -584,6 +586,11 @@ class Designer extends Component {
 
 export const styles = {
   container: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  canvasContainer: {
     position: 'relative'
   },
   keyboardManager: {
