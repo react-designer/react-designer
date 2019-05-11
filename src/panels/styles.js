@@ -1,7 +1,7 @@
 export default {
   propertyPanel: {
     position: 'relative',
-    width: 200,
+    width: 240,
     padding: '0 5px 6px 5px',
     fontFamily: '"Lucida Grande", sans-serif',
     fontSize: 11

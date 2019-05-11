@@ -19,22 +19,32 @@ class Preview extends Component {
   }
 
   render() {
-    let {width, height, objects, objectTypes} = this.props;
+    let {width, height, objects, objectTypes, responsive = false} = this.props;
 
     let style = {
       ...styles.container,
       ...this.props.style,
-      width: width,
-      height: height,
+      width: responsive ? '100%' : width,
+      height: responsive ? '100%' : height,
       padding: 0
    };
 
    let canvas = {
-      width,
-      height,
-      canvasWidth: width,
-      canvasHeight: height
+      width: responsive ? '100%' : width,
+      height: responsive ? '100%' : height,
+      canvasWidth: responsive ? '100%' : width,
+      canvasHeight: responsive ? '100%' : height
    };
+
+   if (responsive) {
+     objects = objects.map(object => ({
+       ...object,
+       width: (object.width / width) * 100 + '%',
+       height: (object.height / height) * 100 + '%',
+       x: (object.x / width)*100 + '%',
+       y: (object.y / height)*100 + '%',
+     }))
+   }
 
     return (
       <div className={'container'} style={style}>
