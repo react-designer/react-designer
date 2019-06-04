@@ -395,13 +395,17 @@ class Designer extends Component {
   }
 
   selectTool(tool) {
-    this.setState({
-      selectedTool: tool,
-      mode: modes.DRAW,
-      currentObjectIndex: null,
-      showHandler: false,
-      handler: null
-    });
+    if (typeof tool === 'function') {
+      tool(this);
+    } else {
+      this.setState({
+        selectedTool: tool,
+        mode: modes.DRAW,
+        currentObjectIndex: null,
+        showHandler: false,
+        handler: null
+      });
+    }
   }
 
   handleObjectChange(key, value) {
