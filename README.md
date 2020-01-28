@@ -256,4 +256,4 @@ Here is a todo list that in my mind. You could extend this list.
 - Wassim Gharbi <wassgha@gmail.com> - [wassgha](https://github.com/wassgha/)
 - [iamraffe](https://github.com/iamraffe/)
 - [thatneat](https://github.com/thatneat/)
-- Dan Mahavithan - [mahathun](https://github.com/mahathun/)
+- Dan Mahavithana - [mahathun](https://github.com/mahathun/)
