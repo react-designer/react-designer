@@ -25,7 +25,7 @@ export default class SizePanel extends Component {
         </Columns>}
         <Columns label="Position">
           <Column showIf={_.has(object, 'x')}
-                  label="top" value={object.x}
+                  label="left" value={object.x}
                   onChange={this.props.onChange.bind(this, 'x')} />
           <Column showIf={_.has(object, 'y')} label="top" value={object.y}
                   onChange={this.props.onChange.bind(this, 'y')} />
