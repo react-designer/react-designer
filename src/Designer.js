@@ -504,9 +504,9 @@ class Designer extends Component {
 
     let { objects, objectTypes, insertMenu: InsertMenuComponent } = this.props
 
-    let currentObject = objects[selectedObjectIndex],
-      isEditMode = mode === modes.EDIT_OBJECT,
-      showPropertyPanel = selectedObjectIndex !== null
+    let currentObject = objects[selectedObjectIndex]
+    let isEditMode = mode === modes.EDIT_OBJECT
+    let showPropertyPanel = selectedObjectIndex !== null
 
     let { width, height } = this.getCanvas()
 

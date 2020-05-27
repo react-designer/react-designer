@@ -1,6 +1,4 @@
 import React, { Component, useState } from 'react'
-import ReactDOM from 'react-dom'
-import Icon from './Icon'
 
 function ScaleAnchor(props) {
   let { boundingBox } = props

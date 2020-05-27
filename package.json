@@ -1,5 +1,5 @@
 {
-  "name": "react-designer",
+  "name": "@looop/react-designer",
   "version": "1.1.1",
   "description": "Easy to configure, lightweight, editable vector graphics in your react components.",
   "main": "./lib/index.js",
@@ -7,6 +7,7 @@
     "start": "node server.js",
     "deploy": "NODE_ENV=production webpack -p --config webpack.production.js",
     "prepare": "babel -d lib/ src/",
+    "dev": "babel -d lib/ src/ -w",
     "build": "npm run prepare",
     "install": "npm run clean && npm run build",
     "prepublish": "npm run clean && npm run build",
