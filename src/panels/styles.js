@@ -4,7 +4,7 @@ export default {
     width: 240,
     padding: '0 5px 6px 5px',
     fontFamily: '"Lucida Grande", sans-serif',
-    fontSize: 11
+    fontSize: 11,
   },
   propertyGroup: {
     backgroundColor: '#f1f1f1',
@@ -13,32 +13,32 @@ export default {
     paddingTop: 2,
     paddingLeft: 10,
     border: '0px solid #d3d3d3',
-    marginBottom: 5
+    marginBottom: 5,
   },
   inputHelper: {
     fontSize: 9,
     color: '#d2d2d2',
     paddingTop: 2,
-    paddingLeft: 5
+    paddingLeft: 5,
   },
   inlineInputHelper: {
     fontSize: 9,
     display: 'inline-block',
-    marginLeft: 10
+    marginLeft: 10,
   },
   panelTitle: {
     float: 'left',
     width: 60,
     padding: 3,
-    color: '#b8b8b8'
+    color: '#b8b8b8',
   },
   columns: {
     overflow: 'hidden',
-    marginTop: 10
+    marginTop: 10,
   },
   column: {
     float: 'left',
-    marginRight: 5
+    marginRight: 5,
   },
   input: {
     background: '#e1e1e1',
@@ -56,11 +56,11 @@ export default {
     borderRadius: 0,
     borderRight: '3px solid #b7b7b7',
     color: 'gray',
-    width: 75
+    width: 75,
   },
   integerInput: {
     width: 50,
-    outline: 'none'
+    outline: 'none',
   },
   textInput: {
     marginTop: 2,
@@ -82,7 +82,7 @@ export default {
     width: 14,
     height: 14,
     display: 'inline-block',
-    borderRadius: '50%'
+    borderRadius: '50%',
   },
   colorCover: {
     position: 'fixed',
@@ -94,7 +94,7 @@ export default {
   colorPopover: {
     position: 'absolute',
     marginTop: 8,
-    zIndex: 999999
+    zIndex: 999999,
   },
   empty: {
     display: 'none',
@@ -107,13 +107,13 @@ export default {
   },
   item: {
     padding: '2px 6px',
-    cursor: 'default'
+    cursor: 'default',
   },
 
   highlightedItem: {
     color: 'white',
     background: 'hsl(200, 50%, 50%)',
     padding: '2px 6px',
-    cursor: 'default'
+    cursor: 'default',
   },
-};
+}

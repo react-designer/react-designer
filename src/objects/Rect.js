@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {modes} from '../constants';
-import Icon from '../Icon';
-import _ from 'lodash';
+import React, { Component } from 'react'
+import { modes } from '../constants'
+import Icon from '../Icon'
+import _ from 'lodash'
 
-import Vector from './Vector';
+import Vector from './Vector'
 
 export default class Rect extends Vector {
   static meta = {
@@ -12,21 +12,23 @@ export default class Rect extends Vector {
       width: 5,
       height: 5,
       strokeWidth: 0,
-      fill: "blue",
+      fill: 'blue',
       radius: 0,
-      blendMode: "normal",
-      rotate: 0
-    }
-  };
+      blendMode: 'normal',
+      rotate: 0,
+    },
+  }
 
   render() {
-    let {object, index} = this.props;
+    let { object, index } = this.props
     return (
-      <rect style={this.getStyle()}
-         {...this.getObjectAttributes()}
-         rx={object.radius}
-         width={object.width}
-         height={object.height} />
-    );
+      <rect
+        style={this.getStyle()}
+        {...this.getObjectAttributes()}
+        rx={object.radius}
+        width={object.width}
+        height={object.height}
+      />
+    )
   }
 }

@@ -1,6 +1,6 @@
-var path = require('path');
-var webpack = require('webpack');
-var node_modules_dir = path.resolve(__dirname, 'node_modules');
+var path = require('path')
+var webpack = require('webpack')
+var node_modules_dir = path.resolve(__dirname, 'node_modules')
 
 module.exports = {
   resolve: {
@@ -12,35 +12,35 @@ module.exports = {
       'browserify',
       ['jam', 'main'],
       'main',
-      'index'
-    ]
+      'index',
+    ],
   },
   entry: ['./examples'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/static/',
   },
   plugins: [],
   module: {
     rules: [
       {
         test: /^((?!\.module).)*\.css$/,
-        loaders: ['style-loader', 'css-loader']
+        loaders: ['style-loader', 'css-loader'],
       },
       {
         test: /\.module\.css$/,
         loaders: [
           'style-loader',
-          'css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]!'
-        ]
+          'css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]!',
+        ],
       },
       {
         test: /\.js$/,
         loaders: ['babel-loader'],
         exclude: [node_modules_dir],
-        include: [path.join(__dirname, 'src'), path.join(__dirname, 'example')]
-      }
-    ]
-  }
-};
+        include: [path.join(__dirname, 'src'), path.join(__dirname, 'example')],
+      },
+    ],
+  },
+}

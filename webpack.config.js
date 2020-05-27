@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
@@ -12,19 +12,19 @@ module.exports = {
       'browserify',
       ['jam', 'main'],
       'main',
-      'index'
-    ]
+      'index',
+    ],
   },
   devtool: 'eval',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './examples'
+    './examples',
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/dist/',
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   module: {
@@ -32,20 +32,20 @@ module.exports = {
       { test: /\.(png|svg)$/, loader: 'url-loader?limit=8192' },
       {
         test: /^((?!\.module).)*\.css$/,
-        loaders: ['style-loader', 'css-loader']
+        loaders: ['style-loader', 'css-loader'],
       },
       {
         test: /\.module\.css$/,
         loaders: [
           'style-loader',
-          'css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]!'
-        ]
+          'css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]!',
+        ],
       },
       {
         test: /\.js$/,
         loaders: ['react-hot-loader/webpack', 'babel-loader'],
-        include: [path.join(__dirname, 'src'), path.join(__dirname, 'example')]
-      }
-    ]
-  }
-};
+        include: [path.join(__dirname, 'src'), path.join(__dirname, 'example')],
+      },
+    ],
+  },
+}
