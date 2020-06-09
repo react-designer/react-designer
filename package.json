@@ -1,6 +1,6 @@
 {
   "name": "@looop/react-designer",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Easy to configure, lightweight, editable vector graphics in your react components.",
   "main": "./lib/index.js",
   "scripts": {
@@ -23,14 +23,17 @@
   ],
   "author": "Fatih Erikli <fatiherikli@gmail.com> (http://fatiherikli.com)",
   "license": "MIT",
+  "files": [
+    "lib"
+  ],
   "homepage": "https://github.com/react-designer/react-designer",
   "devDependencies": {
-    "@babel/cli": "^7.10.0",
-    "@babel/core": "^7.10.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-export-default-from": "^7.8.3",
-    "@babel/preset-env": "^7.10.0",
-    "@babel/preset-react": "^7.10.0",
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-proposal-export-default-from": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-css-modules-transform": "^1.6.2",
     "babel-plugin-webpack-loaders": "^0.9.0",
