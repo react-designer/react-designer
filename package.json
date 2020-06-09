@@ -1,6 +1,6 @@
 {
   "name": "@looop/react-designer",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Easy to configure, lightweight, editable vector graphics in your react components.",
   "main": "./lib/index.js",
   "scripts": {
@@ -9,13 +9,12 @@
     "prepare": "babel -d lib/ src/",
     "dev": "babel -d lib/ src/ -w",
     "build": "npm run prepare",
-    "install": "npm run clean && npm run build",
     "prepublish": "npm run clean && npm run build",
     "clean": "rimraf lib"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fatiherikli/react-designer"
+    "url": "git@github.com:LeapLabs/react-designer.git"
   },
   "keywords": [
     "react",
