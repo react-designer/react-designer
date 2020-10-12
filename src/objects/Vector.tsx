@@ -9,7 +9,7 @@ import {
   StylePanel,
   ArrangePanel,
   ImagePanel,
-} from '../panels'
+} from '../panels/index'
 
 export default class Vector extends Component {
   static panels = [SizePanel, TextPanel, StylePanel, ImagePanel, ArrangePanel]

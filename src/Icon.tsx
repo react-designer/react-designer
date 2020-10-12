@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Icon extends Component {
+export default class Icon extends Component<any> {
   static defaultProps = {
     size: 16,
   }
@@ -189,7 +189,6 @@ export default class Icon extends Component {
         viewBox="0 0 24 24"
         onClick={this.props.onClick}
         preserveAspectRatio="xMidYMid meet"
-        fit
         style={{ ...styles, ...this.props.style }}
       >
         {this.renderGraphic()}
