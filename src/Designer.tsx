@@ -22,6 +22,14 @@ class Designer extends Component {
     snapToGrid: 1,
     svgStyle: {},
     insertMenu: InsertMenu,
+    onImageDrop: (file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = (error) => reject(error)
+      })
+    },
   }
 
   state = {
@@ -402,12 +410,24 @@ class Designer extends Component {
     })
   }
 
-  handleObjectChange(key, value) {
+  updateObjectProp(key, value) {
     let { selectedObjectIndex } = this.state
-    // console.log(this.state, key, value)
+
     this.updateObject(selectedObjectIndex, {
       [key]: value,
     })
+  }
+
+  handleObjectChange(key, value) {
+    if (key === 'xlinkHref') {
+      this.props.onImageDrop(value).then((href) => {
+        this.updateObjectProp(key, href)
+      })
+    } else {
+      this.updateObjectProp(key, value)
+    }
+
+    // console.log(this.state, key, value)
   }
 
   handleArrange(arrange) {
