@@ -426,8 +426,6 @@ class Designer extends Component {
     } else {
       this.updateObjectProp(key, value)
     }
-
-    // console.log(this.state, key, value)
   }
 
   handleArrange(arrange) {
