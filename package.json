@@ -1,12 +1,12 @@
 {
   "name": "@looop/react-designer",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Easy to configure, lightweight, editable vector graphics in your react components.",
   "main": "./lib/index.js",
   "scripts": {
     "start": "ts-node server.ts",
     "deploy": "NODE_ENV=production webpack -p --config webpack.production.js",
-    "prepare": "babel -d lib/ src/ --extensions \".tsx\"",
+    "prepare": "babel -d lib/ src/ --extensions \".tsx,.ts\"",
     "dev": "babel -d lib/ src/ -w",
     "build": "npm run prepare",
     "prepublish": "npm run clean && npm run build",

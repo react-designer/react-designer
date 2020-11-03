@@ -6,7 +6,7 @@ import InsertMenu from './panels/InsertMenu'
 import SVGRenderer from './SVGRenderer'
 import Handler from './Handler'
 import { modes } from './constants'
-import * as actions from './actions'
+import { drag, rotate, scale } from './actions/index'
 import { Text, Path, Rect, Circle, Image } from './objects'
 import PanelList from './panels/PanelList'
 
@@ -274,8 +274,6 @@ class Designer extends Component {
     let { objects } = this.props
     let object = objects[currentObjectIndex]
     let mouse = this.getMouseCoords(event)
-
-    let { scale, rotate, drag } = actions
 
     let map = {
       [modes.SCALE]: scale,
