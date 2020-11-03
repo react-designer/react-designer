@@ -10,7 +10,24 @@ import { drag, rotate, scale } from './actions/index'
 import { Text, Path, Rect, Circle, Image } from './objects'
 import PanelList from './panels/PanelList'
 
-class Designer extends Component {
+class Designer extends Component<{
+  objectTypes: {
+    text?: typeof Text
+    rectangle?: typeof Rect
+    circle?: typeof Circle
+    polygon?: typeof Path
+    image?: typeof Image
+  }
+  snapToGrid?: number
+  width?: number
+  height?: number
+  background?: any
+  objects?: any[]
+  onUpdate?: any
+  svgStyle?: any
+  insertMenu?: typeof InsertMenu | null
+  onImageDrop?: (file: any) => Promise<unknown>
+}> {
   static defaultProps = {
     objectTypes: {
       text: Text,
