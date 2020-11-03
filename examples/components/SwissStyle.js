@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Designer from '../../src/Designer'
+import { Designer } from '../../src/index'
 
 export default class extends Component {
   state = {

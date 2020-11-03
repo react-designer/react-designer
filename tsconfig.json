@@ -26,5 +26,13 @@
     "jsx": "react",
     "preserveConstEnums": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": [
+    ".git",
+    "**/*.spec.js",
+    "**/node_modules/**",
+    "**/lib/**",
+    "**/build/**",
+    "./e2e/**"
+  ]
 }

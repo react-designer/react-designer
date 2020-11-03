@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, Rect, Circle } from '../../src'
 import { styles as canvasStyles } from '../../src/SVGRenderer'
-import Designer from '../../src/Designer'
+import { Designer } from '../../src/index'
 
 const priceMap = {
   text: ({ text, fontSize }) => text.length * fontSize * 0.01,

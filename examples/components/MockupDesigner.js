@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Designer from '../../src/Designer'
+import { Designer } from '../../src/index'
+
 import { ArrangePanel, SizePanel } from '../../src/panels'
 import { Rect, Vector, Text } from '../../src/objects/index'
 

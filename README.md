@@ -35,7 +35,7 @@ This is the main canvas component which holds the all toolset and manages all dr
 An example with default configuration:
 
 ```javascript
-import Designer, {Text, Rectangle} from 'react-designer';
+import {Designer, Text, Rectangle} from 'react-designer';
 
 class App() {
   state = {
