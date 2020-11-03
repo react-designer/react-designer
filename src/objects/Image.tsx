@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { modes } from '../constants'
+import React from 'react'
 import Icon from '../Icon'
 import _ from 'lodash'
 
@@ -18,7 +17,7 @@ export default class Image extends Vector {
   }
 
   render() {
-    let { object, index } = this.props
+    let { object } = this.props
     return (
       <image
         xlinkHref={object.xlinkHref}

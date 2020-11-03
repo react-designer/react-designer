@@ -36,7 +36,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.(js|mjs|ts|tsx)$/,
         loaders: ['babel-loader'],
         exclude: [node_modules_dir],
         include: [path.join(__dirname, 'src'), path.join(__dirname, 'example')],

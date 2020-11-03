@@ -1,10 +1,10 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
   resolve: {
-    extensions: ['.js', '.jsx', '.js', '.css'],
+    extensions: ['.ts', '.tsx', '.mjs', '.js', '.jsx', '.css'],
     mainFields: [
       'webpack',
       'browser',
@@ -15,7 +15,7 @@ module.exports = {
       'index',
     ],
   },
-  devtool: 'eval',
+  devtool: 'eval-cheap-module-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
@@ -42,7 +42,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.(js|mjs|ts|tsx)$/,
         loaders: ['react-hot-loader/webpack', 'babel-loader'],
         include: [path.join(__dirname, 'src'), path.join(__dirname, 'example')],
       },

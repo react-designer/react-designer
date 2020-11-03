@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Designer, { Text, Rect, Circle } from '../../src'
+import { Text, Rect, Circle } from '../../src'
 import { styles as canvasStyles } from '../../src/SVGRenderer'
+import Designer from '../../src/Designer'
 
 const priceMap = {
   text: ({ text, fontSize }) => text.length * fontSize * 0.01,
@@ -44,7 +45,7 @@ const Background = ({ style }) => (
   </svg>
 )
 
-export default class extends Component {
+export class TshirtDesigner extends Component {
   state = {
     objects: [
       {

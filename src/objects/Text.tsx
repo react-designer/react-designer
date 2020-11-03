@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { modes } from '../constants'
+import React from 'react'
 import Icon from '../Icon'
 import _ from 'lodash'
 

@@ -8,7 +8,7 @@ import MondrianExample from './components/Mondrian'
 import MalevichExample from './components/Malevich'
 import SwissStyleExample from './components/SwissStyle'
 import MockupDesignerExample from './components/MockupDesigner'
-import TshirtDesignerExample from './components/TshirtDesigner'
+import { TshirtDesigner } from './components/TshirtDesigner'
 
 export default class App extends Component {
   render() {
@@ -210,7 +210,7 @@ class App() {
             </p>
           </div>
           <div className={classes.preview} style={{ marginBottom: 40 }}>
-            <TshirtDesignerExample />
+            <TshirtDesigner />
           </div>
           <p
             className={classes.info}
@@ -249,11 +249,8 @@ const calculatePrice = (objects, initialCost = 5) => (
         </div>
         <div className={classes.footer}>
           <div className={classes.footerLeft}>
-            <a href="http://fatiherikli.com">Fatih Erikli</a>, 2016 <br />
+            <a href="https://www.looop.co/">Looop</a>, 2020 <br />
             MIT Licensed
-          </div>
-          <div className={classes.footerRight}>
-            Ask me anything: <a href="https://twitter.com/fthrkl">@fthrkl</a>
           </div>
         </div>
       </div>
