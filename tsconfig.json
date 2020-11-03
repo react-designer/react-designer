@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ESNext",
     "lib": ["esnext", "esnext.asynciterable", "dom"],
     "outDir": "dist",
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -11,7 +11,7 @@
     "noImplicitAny": false,
     "strict": true,
     "inlineSources": true,
-
+    "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
@@ -27,6 +27,7 @@
     "preserveConstEnums": true,
     "skipLibCheck": true
   },
+  "include": ["src"],
   "exclude": [
     ".git",
     "**/*.spec.js",

@@ -234,6 +234,7 @@ I built this project to create user-designed areas in my side project. So, this 
 
 Here is a todo list that in my mind. You could extend this list.
 
+- fix all TS errors
 - Implement `Export` panel
   - Export selected object
   - Export document

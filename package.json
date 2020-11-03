@@ -1,12 +1,13 @@
 {
   "name": "@looop/react-designer",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Easy to configure, lightweight, editable vector graphics in your react components.",
   "main": "./lib/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "start": "ts-node server.ts",
     "deploy": "NODE_ENV=production webpack -p --config webpack.production.js",
-    "prepare": "babel -d lib/ src/ --extensions \".tsx,.ts\"",
+    "prepare": "babel -d lib/ src/ --extensions \".tsx,.ts\" && tsc || true",
     "dev": "babel -d lib/ src/ -w",
     "build": "npm run prepare",
     "prepublish": "npm run clean && npm run build",
@@ -37,7 +38,8 @@
   ],
   "license": "MIT",
   "files": [
-    "lib"
+    "lib",
+    "dist"
   ],
   "homepage": "https://github.com/react-designer/react-designer",
   "devDependencies": {
@@ -60,6 +62,7 @@
     "eslint-plugin-react": "^7.21.5",
     "file-loader": "^3.0.1",
     "husky": "^4.3.0",
+    "microbundle": "^0.12.4",
     "prettier": "^2.1.2",
     "pretty-quick": "^2.0.2",
     "react": "^16.14.0",
