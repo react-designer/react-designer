@@ -301,7 +301,7 @@ class Designer extends Component {
     let mouse = this.getMouseCoords(event);
 
     let refs = this.objectRefs,
-        keys = Object.keys(refs),
+        keys = Object.keys(refs).filter((key)=>refs[key]),
         offset = this.getOffset();
 
     let currentRect = (refs[currentObjectIndex]
