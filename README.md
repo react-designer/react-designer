@@ -37,27 +37,36 @@ This is the main canvas component which holds the all toolset and manages all dr
 An example with default configuration:
 
 ```javascript
-import Designer, {Text, Rectangle} from 'react-designer';
+import Designer, {Text, Image} from 'react-designer';
 
-class App() {
-  state = {
-    objects: [
-      {type: "text", x: 10, y: 20, text: "Hello!", fill: "red"},
-      {type: "rect", x: 50, y: 70, fill: "red"}
-    ]
-  }
+export const App = () => {
+  const [objects, setObjects] = useState([
+    {
+      type: 'text',
+      x: 10,
+      y: 20,
+      text: 'Hello!',
+      fill: 'red',
+      fontFamily: 'Helvetica'
+    }
+  ])
+  
 
-  render() {
-    return (
-      <Designer width={250} height={350}
+  return (
+      <Designer
+        width={250}
+        height={350}
         objectTypes={{
-          'text': Text,
-          'rect': Rect
+          text: Text,
+          image: Image
         }}
-        onUpdate={(objects) => this.setState({objects})}
-        objects={this.state.objects} />
-    )
-  }
+        onUpdate={(objects) => {
+          console.log('update', objects)
+          return setObjects(objects)
+        }}
+        objects={objects}
+      />
+  )
 }
 ```
 
