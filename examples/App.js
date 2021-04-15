@@ -64,7 +64,7 @@ class App() {
             container component.</p>
             <p>Enabled all default drawing tool set and panels.</p>
             <p>
-              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/Mondrian.js">Show example on github</a>
+              <a href="https://github.com/react-designer/react-designer/blob/master/examples/components/Mondrian.js">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -80,7 +80,7 @@ class App() {
 
             <p>You can double-click to edit shapes.</p>
             <p>
-              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/Malevich.js">Show example on github</a>
+              <a href="https://github.com/react-designer/react-designer/blob/master/examples/components/Malevich.js">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -95,7 +95,7 @@ class App() {
               container component.</p>
 
             <p>
-              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/SwissStyle.js">Show example on github</a>
+              <a href="https://github.com/react-designer/react-designer/blob/master/examples/components/SwissStyle.js">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -110,17 +110,17 @@ class App() {
 
             <p>Custom components on this demo:</p>
             <ul>
-              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L32">Button</a></li>
-              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L73">Input</a></li>
-              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L7">H1</a></li>
-              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L19">Link</a></li>
-              <li><a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js#L113">Fieldset</a></li>
+              <li><a href="https://github.com/react-designer/react-designer/blob/master/examples/components/MockupDesigner.js#L32">Button</a></li>
+              <li><a href="https://github.com/react-designer/react-designer/blob/master/examples/components/MockupDesigner.js#L73">Input</a></li>
+              <li><a href="https://github.com/react-designer/react-designer/blob/master/examples/components/MockupDesigner.js#L7">H1</a></li>
+              <li><a href="https://github.com/react-designer/react-designer/blob/master/examples/components/MockupDesigner.js#L19">Link</a></li>
+              <li><a href="https://github.com/react-designer/react-designer/blob/master/examples/components/MockupDesigner.js#L113">Fieldset</a></li>
             </ul>
 
             <p>These components are derived from Vector, but they are still pure React components.</p>
 
             <p>
-              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/MockupDesigner.js">Show example on github</a>
+              <a href="https://github.com/react-designer/react-designer/blob/master/examples/components/MockupDesigner.js">Show example on github</a>
             </p>
           </div>
           <div className={classes.preview}>
@@ -139,7 +139,7 @@ class App() {
               For example price is instantly changing while you resizing objects or typing a text.</p>
 
             <p>
-              <a href="https://github.com/fatiherikli/react-designer/blob/master/examples/components/TshirtDesigner.js">Show example on github</a> <br />
+              <a href="https://github.com/react-designer/react-designer/blob/master/examples/components/TshirtDesigner.js">Show example on github</a> <br />
             </p>
           </div>
           <div className={classes.preview} style={{marginBottom: 40}}>
