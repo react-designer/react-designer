@@ -323,7 +323,7 @@ class Designer extends Component<{
     let mouse = this.getMouseCoords(event)
 
     let refs = this.objectRefs,
-      keys = Object.keys(refs),
+      keys = Object.keys(this.props.objects),
       offset = this.getOffset()
 
     let currentRect = refs[currentObjectIndex].getBoundingClientRect()
